@@ -5,6 +5,14 @@ const expoConfig = require('eslint-config-expo/flat');
 module.exports = defineConfig([
   expoConfig,
   {
-    ignores: ['dist/*'],
+    ignores: ['dist/*', 'build/*', 'node_modules/*'],
+    settings: {
+      'import/resolver': {
+        typescript: {
+          // Point to the project tsconfig so the resolver understands `@/*` paths
+          project: './tsconfig.json',
+        },
+      },
+    },
   },
 ]);
