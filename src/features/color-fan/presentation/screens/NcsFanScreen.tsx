@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 import {
-  GestureDetector,
-  GestureHandlerRootView,
+    GestureDetector,
+    GestureHandlerRootView,
 } from "react-native-gesture-handler";
 
 import { NcsGroup, SelectionPath } from "@/src/core/types/ncs";

@@ -1,14 +1,29 @@
 import { Stack } from "expo-router";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 export default function RootLayout() {
   return (
-    <GestureHandlerRootView>
-      <Stack
-        screenOptions={{
-          headerShown: false,
+    <Stack screenOptions={{ headerShown: false }}>
+      {/* The Tab Bar Group */}
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
+      {/* The Detail Screens (Pushed on top of tabs) */}
+      <Stack.Screen
+        name="fans/selection"
+        options={{
+          title: "Choose a Fan",
+          headerShown: true,
+          headerBackTitle: "Home",
         }}
       />
-    </GestureHandlerRootView>
+      <Stack.Screen
+        name="fans/ncs"
+        options={{
+          title: "NCS Standard",
+          headerShown: true,
+          headerTransparent: true, // Cool effect for the fan view
+          headerTintColor: "#000",
+        }}
+      />
+    </Stack>
   );
 }

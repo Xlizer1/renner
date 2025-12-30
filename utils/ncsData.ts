@@ -1,4 +1,4 @@
-import { NcsColor, ncsColors, ncsHues } from "../assets/ncs/ncsList";
+import { NcsColor, ncsColors, ncsHues } from "@/assets/ncs/ncsList";
 
 export type NcsColorWithKey = NcsColor & { key: string };
 export type NcsStrip = NcsColorWithKey[];
