@@ -27,12 +27,20 @@ export default function HomeScreen() {
         />
 
         {/* Placeholder for future features */}
-        <DashboardCard
+        {/* <DashboardCard
           title="Saved Palettes"
           subtitle="Your favorite combinations"
           icon="heart"
           color="#4ECDC4"
           onPress={() => console.log("Coming soon")}
+        /> */}
+
+        <DashboardCard
+          title="Scan Color"
+          subtitle="Find matching colors from camera"
+          icon="camera"
+          color="#4ECDC4"
+          onPress={() => router.push("/scan")} // Navigates to camera
         />
       </ScrollView>
     </SafeAreaView>
