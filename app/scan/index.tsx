@@ -5,15 +5,12 @@ import { useRouter } from "expo-router";
 import React, { useRef, useState } from "react";
 import {
   ActivityIndicator,
-  Dimensions,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-const { width, height } = Dimensions.get("window");
 
 export default function CameraScreen() {
   const [permission, requestPermission] = useCameraPermissions();
@@ -63,24 +60,25 @@ export default function CameraScreen() {
     imgWidth: number,
     imgHeight: number
   ) => {
-    // UPDATED: Crop a 20x20 area for better sampling
     const CROP_SIZE = 20;
 
-    const cropRegion = {
-      originX: imgWidth / 2 - CROP_SIZE / 2,
-      originY: imgHeight / 2 - CROP_SIZE / 2,
-      width: CROP_SIZE,
-      height: CROP_SIZE,
-    };
-
-    // Crop the image to 20x20
+    // 1. Crop on phone (save bandwidth)
     const result = await ImageManipulator.manipulateAsync(
       uri,
-      [{ crop: cropRegion }],
-      { base64: true, format: ImageManipulator.SaveFormat.PNG }
+      [
+        {
+          crop: {
+            originX: imgWidth / 2 - 10,
+            originY: imgHeight / 2 - 10,
+            width: 20,
+            height: 20,
+          },
+        },
+      ],
+      { format: ImageManipulator.SaveFormat.PNG } // No base64 needed, just file
     );
 
-    // Pass the 20x20 image URI to results page
+    // 2. Pass the file URI to the results page
     router.push({
       pathname: "/scan/results",
       params: { uri: result.uri },
