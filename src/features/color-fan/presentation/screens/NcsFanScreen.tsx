@@ -19,6 +19,8 @@ import {
   GestureHandlerRootView,
 } from "react-native-gesture-handler";
 
+import { useFavorites } from "@/src/core/context/FavoritesContext";
+import { useHistory } from "@/src/core/context/HistoryContext";
 import { NcsGroup, SelectionPath } from "@/src/core/types/ncs";
 import { NcsRepository } from "@/src/features/color-fan/data/ncsRepository";
 import FanStrip from "@/src/features/color-fan/presentation/components/FanStrip";
@@ -27,13 +29,24 @@ import { useFanVirtualization } from "@/src/features/color-fan/presentation/hook
 
 export default function FanScreen() {
   const router = useRouter();
+
+  // 1. USE GLOBAL CONTEXT (The Brain)
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const { addToHistory } = useHistory();
+
   const { targetKey } = useLocalSearchParams<{ targetKey: string }>();
 
   const [data, setData] = useState<NcsGroup[]>([]);
   const [loading, setLoading] = useState(true);
   const [selection, setSelection] = useState<SelectionPath | null>(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const [favorites, setFavorites] = useState<string[]>([]);
+
+  const openFullScreen = () => {
+    if (selectedItem) {
+      addToHistory(selectedItem.key); // <--- Save to History
+      setIsFullScreen(true);
+    }
+  };
 
   useEffect(() => {
     NcsRepository.getColors().then((result) => {
@@ -75,11 +88,7 @@ export default function FanScreen() {
     Alert.alert("Copied!", `${type} (${text}) copied to clipboard.`);
   };
 
-  const toggleFavorite = (key: string) => {
-    setFavorites((prev) =>
-      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
-    );
-  };
+  // ❌ DELETED: const toggleFavorite = ... (Local function removed)
 
   if (loading)
     return (
@@ -94,7 +103,8 @@ export default function FanScreen() {
     ? data[selection.groupIndex].strip[selection.itemIndex]
     : null;
 
-  const isFav = selectedItem ? favorites.includes(selectedItem.key) : false;
+  // 2. CHECK GLOBAL STATE
+  const isFav = selectedItem ? isFavorite(selectedItem.key) : false;
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -146,7 +156,6 @@ export default function FanScreen() {
 
       {/* Main View */}
       <View style={styles.container}>
-        {/* Dynamic Background Tint (Subtle Glow) */}
         {selectedItem && (
           <View
             style={[
@@ -156,7 +165,6 @@ export default function FanScreen() {
           />
         )}
 
-        {/* Vignette Gradient */}
         <LinearGradient
           colors={["transparent", "#121212"]}
           style={StyleSheet.absoluteFillObject}
@@ -165,7 +173,6 @@ export default function FanScreen() {
           end={{ x: 0, y: 1 }}
         />
 
-        {/* Header / Back Button Area */}
         <View style={styles.headerOverlay}>
           <Pressable onPress={() => router.back()} style={styles.backBtn}>
             <Ionicons name="arrow-back" size={24} color="#FFF" />
@@ -189,12 +196,12 @@ export default function FanScreen() {
           </View>
         </GestureDetector>
 
-        {/* Bottom Panel (Dark Mode) */}
+        {/* Bottom Panel */}
         {selectedItem ? (
           <View style={styles.detailPanel}>
             <Pressable
               style={[styles.previewBox, { backgroundColor: selectedItem.hex }]}
-              onPress={() => setIsFullScreen(true)}
+              onPress={openFullScreen}
             >
               <Ionicons name="expand" size={16} color="rgba(0,0,0,0.3)" />
             </Pressable>
@@ -219,9 +226,13 @@ export default function FanScreen() {
               >
                 <Ionicons name="copy-outline" size={18} color="#FFF" />
               </Pressable>
+
+              {/* 3. TRIGGER GLOBAL TOGGLE */}
               <Pressable
                 style={[styles.iconButton, isFav && styles.favButtonActive]}
-                onPress={() => toggleFavorite(selectedItem.key)}
+                onPress={() => {
+                  toggleFavorite(selectedItem.key);
+                }}
               >
                 <Ionicons
                   name={isFav ? "heart" : "heart-outline"}
@@ -263,13 +274,12 @@ const styles = StyleSheet.create({
     borderColor: "#333",
   },
 
-  // Dark Panel
   detailPanel: {
     position: "absolute",
-    bottom: 50, // Moved down since we removed Tab Bar
+    bottom: 50,
     left: 20,
     right: 20,
-    backgroundColor: "#1E1E1E", // Dark Surface
+    backgroundColor: "#1E1E1E",
     borderRadius: 20,
     padding: 12,
     flexDirection: "row",
@@ -281,7 +291,7 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
     elevation: 5,
     borderWidth: 1,
-    borderColor: "#333", // Subtle Border
+    borderColor: "#333",
   },
   previewBox: {
     width: 50,
@@ -294,10 +304,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   infoContainer: { flex: 1, justifyContent: "center" },
-  colorCode: { fontSize: 16, fontWeight: "800", color: "#FFFFFF" }, // White Text
+  colorCode: { fontSize: 16, fontWeight: "800", color: "#FFFFFF" },
   hexCode: {
     fontSize: 12,
-    color: "#888", // Grey Subtext
+    color: "#888",
     fontWeight: "600",
     marginTop: 2,
     fontVariant: ["tabular-nums"],
@@ -307,11 +317,11 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: "#2C2C2C", // Darker Button
+    backgroundColor: "#2C2C2C",
     alignItems: "center",
     justifyContent: "center",
   },
-  favButtonActive: { backgroundColor: "#3D0000" }, // Dark Red BG
+  favButtonActive: { backgroundColor: "#3D0000" },
 
   hintContainer: {
     position: "absolute",
@@ -327,7 +337,6 @@ const styles = StyleSheet.create({
   },
   hintText: { color: "#AAA", fontSize: 12, fontWeight: "600" },
 
-  // Full Screen
   fullScreenContainer: {
     flex: 1,
     alignItems: "center",

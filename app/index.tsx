@@ -118,6 +118,21 @@ export default function HomeScreen() {
             onPress={pickImage}
           />
         </View>
+        <View style={[styles.gridRow, { marginTop: 12 }]}>
+          <ActionCard
+            title="Favorites"
+            subtitle="Saved Colors"
+            icon="heart" // Heart Icon
+            onPress={() => router.push("/favorites")} // Navigates to new page
+          />
+          <ActionCard
+            title="Recents"
+            subtitle="History"
+            icon="time"
+            onPress={() => router.push("/history")}
+          />
+          <View style={{ flex: 1 }} />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -156,7 +171,7 @@ const styles = StyleSheet.create({
   },
   headerButtons: {
     flexDirection: "row",
-    gap: 10
+    gap: 10,
   },
   // Adjust width/height to fit your specific logo aspect ratio
   logo: {

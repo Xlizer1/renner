@@ -1,3 +1,4 @@
+import { useHistory } from "@/src/core/context/HistoryContext";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -15,22 +16,30 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // REPLACE WITH YOUR IP
-const API_URL = "http://192.168.0.169:3000/analyze";
+const API_URL = "http://192.168.0.169:3000"; // Base URL
 
 export default function ResultsScreen() {
   const router = useRouter();
-  const { uri } = useLocalSearchParams();
+  const { addToHistory } = useHistory();
+
+  // Accept 'uri' (Image) OR 'hex' (Direct Color)
+  const { uri, hex } = useLocalSearchParams<{ uri?: string; hex?: string }>();
+
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState<any>(null);
-
-  // State for Full Screen Mode (Stores the hex string to show)
   const [fullScreenColor, setFullScreenColor] = useState<string | null>(null);
 
+  // --- 1. DETERMINE MODE ---
   useEffect(() => {
-    if (uri) uploadImage(uri as string);
-  }, [uri]);
+    if (uri) {
+      analyzeImage(uri);
+    } else if (hex) {
+      findMatchesForHex(hex);
+    }
+  }, [uri, hex]);
 
-  const uploadImage = async (imageUri: string) => {
+  // Mode A: Upload Image (Camera/Gallery)
+  const analyzeImage = async (imageUri: string) => {
     try {
       const formData = new FormData();
       formData.append("image", {
@@ -39,7 +48,7 @@ export default function ResultsScreen() {
         type: "image/png",
       } as any);
 
-      const response = await fetch(API_URL, {
+      const response = await fetch(`${API_URL}/analyze`, {
         method: "POST",
         body: formData,
         headers: { "Content-Type": "multipart/form-data" },
@@ -49,12 +58,35 @@ export default function ResultsScreen() {
       setResults(data);
       setLoading(false);
     } catch (error) {
-      console.error(error);
-      Alert.alert("Error", "Could not connect to server.");
-      setLoading(false);
+      handleError(error);
     }
   };
 
+  // Mode B: Send Hex (History) -> NEW FUNCTION
+  const findMatchesForHex = async (colorHex: string) => {
+    try {
+      const response = await fetch(`${API_URL}/match`, {
+        method: "POST",
+        body: JSON.stringify({ hex: colorHex }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await response.json();
+      setResults(data);
+      setLoading(false);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
+  const handleError = (error: any) => {
+    console.error(error);
+    Alert.alert("Error", "Could not connect to server.");
+    setLoading(false);
+  };
+
+  // ... (Rest of your component: openInFan, getTextColor, Render logic...)
+  // NO CHANGES NEEDED BELOW THIS LINE, just paste the rest of your existing component
   const openInFan = (colorKey: string) => {
     router.push({
       pathname: "/fans/ncs",
@@ -62,7 +94,14 @@ export default function ResultsScreen() {
     });
   };
 
-  // Helper: Determine text color (Black/White) based on brightness
+  const openFullScreen = (color: any) => {
+    if (color) {
+      addToHistory(color);
+      setFullScreenColor(color);
+    }
+  };
+
+  // ... Helper functions (getTextColor, getMatchQuality) ...
   const getTextColor = (hex: string) => {
     if (!hex) return "white";
     const r = parseInt(hex.substr(1, 2), 16);
@@ -72,12 +111,11 @@ export default function ResultsScreen() {
     return yiq >= 128 ? "black" : "white";
   };
 
-  // Helper: Get Badge properties based on Delta E
   const getMatchQuality = (dist: number) => {
-    if (dist < 1.5) return { label: "Perfect Match", color: "#00E676" }; // Bright Green
-    if (dist < 3.0) return { label: "Close Match", color: "#29B6F6" }; // Light Blue
-    if (dist < 10.0) return { label: "Similar", color: "#FFCA28" }; // Amber
-    return { label: "Poor Match", color: "#EF5350" }; // Red
+    if (dist < 1.5) return { label: "Perfect Match", color: "#00E676" };
+    if (dist < 3.0) return { label: "Close Match", color: "#29B6F6" };
+    if (dist < 10.0) return { label: "Similar", color: "#FFCA28" };
+    return { label: "Poor Match", color: "#EF5350" };
   };
 
   if (loading) {
@@ -95,7 +133,6 @@ export default function ResultsScreen() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="light" />
 
-      {/* --- FULL SCREEN MODAL --- */}
       <Modal
         visible={!!fullScreenColor}
         animationType="fade"
@@ -109,7 +146,6 @@ export default function ResultsScreen() {
               { backgroundColor: fullScreenColor },
             ]}
           >
-            {/* Force status bar to match the color logic or hide it */}
             <Pressable
               style={styles.closeButton}
               onPress={() => setFullScreenColor(null)}
@@ -142,7 +178,6 @@ export default function ResultsScreen() {
         )}
       </Modal>
 
-      {/* --- HEADER --- */}
       <View style={styles.header}>
         <Pressable onPress={() => router.back()} style={styles.backBtn}>
           <Ionicons name="arrow-back" size={24} color="#FFF" />
@@ -152,14 +187,11 @@ export default function ResultsScreen() {
       </View>
 
       <View style={styles.content}>
-        {/* --- 1. HERO CAPTURED CARD --- */}
         <Pressable
           style={[styles.heroCard, { backgroundColor: results?.detectedColor }]}
-          onPress={() => setFullScreenColor(results?.detectedColor)}
+          onPress={() => openFullScreen(results?.detectedColor)}
         >
-          {/* Gloss Overlay */}
           <View style={styles.glossOverlay} />
-
           <View style={styles.heroInfo}>
             <Text style={[styles.heroLabel, { color: contrastColor }]}>
               CAPTURED COLOR
@@ -178,7 +210,6 @@ export default function ResultsScreen() {
 
         <Text style={styles.sectionTitle}>Top Matches</Text>
 
-        {/* --- 2. MATCH LIST --- */}
         <FlatList
           data={results?.matches || []}
           keyExtractor={(item) => item.item.key}
@@ -190,17 +221,13 @@ export default function ResultsScreen() {
                 style={styles.matchCard}
                 onPress={() => openInFan(item.item.key)}
               >
-                {/* Visual Split: Match Color vs Scanned Color */}
                 <View style={styles.splitSwatchContainer}>
-                  {/* Main Background: The NCS Match */}
                   <View
                     style={[
                       styles.mainSwatch,
                       { backgroundColor: item.item.hex },
                     ]}
                   />
-
-                  {/* Sliver: The Original Scanned Color (Comparison) */}
                   <View
                     style={[
                       styles.compareSliver,
@@ -208,11 +235,8 @@ export default function ResultsScreen() {
                     ]}
                   />
                 </View>
-
                 <View style={styles.matchInfo}>
                   <Text style={styles.matchKey}>{item.item.key}</Text>
-
-                  {/* Accuracy Badge */}
                   <View style={styles.badgeRow}>
                     <View
                       style={[styles.dot, { backgroundColor: badge.color }]}
@@ -222,8 +246,6 @@ export default function ResultsScreen() {
                     </Text>
                   </View>
                 </View>
-
-                {/* Action Icon */}
                 <View style={styles.actionIcon}>
                   <Ionicons name="chevron-forward" size={20} color="#555" />
                 </View>
@@ -240,10 +262,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#121212" },
   center: { justifyContent: "center", alignItems: "center" },
   content: { flex: 1, paddingHorizontal: 20 },
-
   loadingText: { color: "#888", marginTop: 16, fontSize: 14 },
-
-  // Header
   header: {
     flexDirection: "row",
     alignItems: "center",
@@ -263,15 +282,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#333",
   },
-
-  // Hero Card
   heroCard: {
     height: 140,
     borderRadius: 24,
     marginBottom: 30,
     padding: 24,
     justifyContent: "flex-end",
-    // Shadow glow based on brightness could be cool, but standard shadow for now
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 8 },
     shadowOpacity: 0.3,
@@ -300,7 +316,6 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   heroHex: { fontSize: 32, fontWeight: "800", letterSpacing: -1 },
-
   sectionTitle: {
     fontSize: 16,
     fontWeight: "600",
@@ -308,8 +323,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginLeft: 4,
   },
-
-  // Match List
   matchCard: {
     flexDirection: "row",
     alignItems: "center",
@@ -320,8 +333,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#2A2A2A",
   },
-
-  // Split Swatch Logic
   splitSwatchContainer: {
     width: 56,
     height: 56,
@@ -332,16 +343,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "rgba(255,255,255,0.1)",
   },
-  mainSwatch: { flex: 1 }, // 70-80% width
-  compareSliver: { width: 12 }, // Narrow strip on right
-
+  mainSwatch: { flex: 1 },
+  compareSliver: { width: 12 },
   matchInfo: { flex: 1 },
   matchKey: { fontSize: 18, fontWeight: "700", color: "#FFF", marginBottom: 4 },
-
   badgeRow: { flexDirection: "row", alignItems: "center" },
   dot: { width: 6, height: 6, borderRadius: 3, marginRight: 6 },
   badgeText: { fontSize: 12, fontWeight: "600" },
-
   actionIcon: {
     width: 32,
     height: 32,
@@ -350,8 +358,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-
-  // Full Screen Modal
   fullScreenContainer: {
     flex: 1,
     alignItems: "center",
