@@ -1,17 +1,20 @@
-import { useLocalSearchParams } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
   FlatList,
+  Pressable,
   StyleSheet,
   Text,
-  View
+  View,
 } from "react-native";
 
 const API_URL = "http://192.168.0.169:3000/analyze";
 
 export default function ResultsScreen() {
+  const router = useRouter();
   const { uri } = useLocalSearchParams();
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState<any>(null);
@@ -51,6 +54,16 @@ export default function ResultsScreen() {
     }
   };
 
+  const openInFan = (colorKey: string) => {
+    // Since we currently only have NCS, we assume it's NCS.
+    // If you add RAL later, you would check "if (colorKey.startsWith('RAL')) ..."
+
+    router.push({
+      pathname: "/fans/ncs",
+      params: { targetKey: colorKey }, // Pass the key!
+    });
+  };
+
   if (loading)
     return <ActivityIndicator size="large" style={{ marginTop: 50 }} />;
 
@@ -68,14 +81,28 @@ export default function ResultsScreen() {
         data={results?.matches || []}
         keyExtractor={(item) => item.item.key}
         renderItem={({ item }) => (
-          <View style={styles.row}>
-            <View
-              style={[styles.miniSwatch, { backgroundColor: item.item.hex }]}
-            />
-            <View>
-              <Text style={styles.matchKey}>{item.item.key}</Text>
-              <Text>Distance: {item.distance.toFixed(2)}</Text>
+          <View style={styles.matchCard}>
+            {/* Left Side: Color Info */}
+            <View style={styles.rowLeft}>
+              <View
+                style={[styles.miniSwatch, { backgroundColor: item.item.hex }]}
+              />
+              <View>
+                <Text style={styles.matchKey}>{item.item.key}</Text>
+                <Text style={styles.distance}>
+                  Dist: {item.distance.toFixed(2)}
+                </Text>
+              </View>
             </View>
+
+            {/* Right Side: Action Button */}
+            <Pressable
+              style={styles.viewFanButton}
+              onPress={() => openInFan(item.item.key)}
+            >
+              <Text style={styles.viewFanText}>Locate</Text>
+              <Ionicons name="chevron-forward" size={16} color="white" />
+            </Pressable>
           </View>
         )}
       />
@@ -111,6 +138,40 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
   },
-  miniSwatch: { width: 50, height: 50, borderRadius: 8, marginRight: 15 },
-  matchKey: { fontWeight: "bold", fontSize: 16 },
+  matchCard: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between", // Push button to right
+    backgroundColor: "white",
+    padding: 12,
+    borderRadius: 12,
+    marginBottom: 10,
+    // Shadow
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowRadius: 5,
+    elevation: 2,
+  },
+  rowLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  miniSwatch: { width: 40, height: 40, borderRadius: 8, marginRight: 12 },
+  matchKey: { fontWeight: "700", fontSize: 16, color: "#333" },
+  distance: { fontSize: 12, color: "#888" },
+
+  viewFanButton: {
+    backgroundColor: "#007AFF",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 20,
+  },
+  viewFanText: {
+    color: "white",
+    fontSize: 12,
+    fontWeight: "600",
+    marginRight: 4,
+  },
 });

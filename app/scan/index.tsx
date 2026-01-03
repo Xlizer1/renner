@@ -60,8 +60,6 @@ export default function CameraScreen() {
     imgWidth: number,
     imgHeight: number
   ) => {
-    const CROP_SIZE = 20;
-
     // 1. Crop on phone (save bandwidth)
     const result = await ImageManipulator.manipulateAsync(
       uri,

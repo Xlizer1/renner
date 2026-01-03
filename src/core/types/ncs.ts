@@ -2,6 +2,9 @@
 export interface NcsItem {
   key: string;
   hex: string;
+  blackness: string;
+  chromatines: string;
+  hue: string;
 }
 
 export interface NcsGroup {

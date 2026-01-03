@@ -1,6 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
-import * as Clipboard from "expo-clipboard"; // Import Clipboard
+import * as Clipboard from "expo-clipboard";
 import { LinearGradient } from "expo-linear-gradient";
+import { useLocalSearchParams } from "expo-router"; // Import router params
 import React, { useCallback, useEffect, useState } from "react";
 import {
   ActivityIndicator,
@@ -10,7 +11,7 @@ import {
   StatusBar,
   StyleSheet,
   Text,
-  View
+  View,
 } from "react-native";
 import {
   GestureDetector,
@@ -24,13 +25,14 @@ import { useFanGesture } from "@/src/features/color-fan/presentation/hooks/useFa
 import { useFanVirtualization } from "@/src/features/color-fan/presentation/hooks/useFanVirtualization";
 
 export default function FanScreen() {
+  // 1. Get Deep Link Param
+  const { targetKey } = useLocalSearchParams<{ targetKey: string }>();
+
   const [data, setData] = useState<NcsGroup[]>([]);
   const [loading, setLoading] = useState(true);
   const [selection, setSelection] = useState<SelectionPath | null>(null);
-
-  // New State for features
   const [isFullScreen, setIsFullScreen] = useState(false);
-  const [favorites, setFavorites] = useState<string[]>([]); // Store IDs of favorites
+  const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
     NcsRepository.getColors().then((result) => {
@@ -39,23 +41,37 @@ export default function FanScreen() {
     });
   }, []);
 
-  const { rotation, panGesture } = useFanGesture(data.length);
+  const { rotation, panGesture, scrollToIndex } = useFanGesture(data.length);
   const { min, max } = useFanVirtualization(rotation, data.length);
 
-  const handlePress = useCallback((groupIndex: number, itemIndex: number) => {
-    if(groupIndex === selection?.groupIndex && itemIndex === selection?.itemIndex) {
-      // Deselect if the same item is tapped
-      setSelection(null);
-    } else {
-      setSelection({ groupIndex, itemIndex });
-    }
-  }, [selection?.groupIndex, selection?.itemIndex]);
+  // --- DEEP LINK LOGIC ---
+  useEffect(() => {
+    if (!loading && data.length > 0 && targetKey) {
+      const groupIndex = data.findIndex((g) =>
+        g.strip.some((item) => item.key === targetKey)
+      );
 
-  // --- NEW HANDLERS ---
+      if (groupIndex !== -1) {
+        const itemIndex = data[groupIndex].strip.findIndex(
+          (item) => item.key === targetKey
+        );
+
+        // Delay slightly to allow layout to settle
+        setTimeout(() => {
+          scrollToIndex(groupIndex, true);
+        }, 300);
+
+        setSelection({ groupIndex, itemIndex });
+      }
+    }
+  }, [loading, data, targetKey, scrollToIndex]);
+
+  const handlePress = useCallback((groupIndex: number, itemIndex: number) => {
+    setSelection({ groupIndex, itemIndex });
+  }, []);
 
   const handleCopy = async (text: string, type: "Key" | "Hex") => {
     await Clipboard.setStringAsync(text);
-    // In a real app, use a Toast component here
     Alert.alert("Copied!", `${type} (${text}) copied to clipboard.`);
   };
 
@@ -65,23 +81,21 @@ export default function FanScreen() {
     );
   };
 
-  const getSelectedItem = () => {
-    if (!selection) return null;
-    return data[selection.groupIndex].strip[selection.itemIndex];
-  };
-
-  const selectedItem = getSelectedItem();
-  const isFav = selectedItem ? favorites.includes(selectedItem.key) : false;
-
   if (loading) return <ActivityIndicator style={styles.loader} size="large" />;
 
   const visibleItems = data
     .map((group, index) => ({ group, index }))
     .slice(min, max);
 
+  const selectedItem = selection
+    ? data[selection.groupIndex].strip[selection.itemIndex]
+    : null;
+
+  const isFav = selectedItem ? favorites.includes(selectedItem.key) : false;
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      {/* 1. FULL SCREEN MODAL */}
+      {/* Full Screen Modal */}
       <Modal
         visible={isFullScreen}
         animationType="fade"
@@ -96,8 +110,6 @@ export default function FanScreen() {
             ]}
           >
             <StatusBar hidden />
-
-            {/* Close Button */}
             <Pressable
               style={styles.closeButton}
               onPress={() => setIsFullScreen(false)}
@@ -110,8 +122,6 @@ export default function FanScreen() {
                 }
               />
             </Pressable>
-
-            {/* Centered Info */}
             <View style={styles.fullScreenInfo}>
               <Text
                 style={[
@@ -129,6 +139,7 @@ export default function FanScreen() {
         )}
       </Modal>
 
+      {/* Main View */}
       <View
         style={[
           styles.container,
@@ -160,9 +171,9 @@ export default function FanScreen() {
           </View>
         </GestureDetector>
 
+        {/* Bottom Panel */}
         {selectedItem ? (
           <View style={styles.detailPanel}>
-            {/* 2. Color Preview (Click for Full Screen) */}
             <Pressable
               style={[styles.previewBox, { backgroundColor: selectedItem.hex }]}
               onPress={() => setIsFullScreen(true)}
@@ -177,25 +188,19 @@ export default function FanScreen() {
               </Text>
             </View>
 
-            {/* 3. Action Buttons Row */}
             <View style={styles.actions}>
-              {/* Copy Key Button */}
               <Pressable
                 style={styles.iconButton}
                 onPress={() => handleCopy(selectedItem.key, "Key")}
               >
                 <Ionicons name="text-outline" size={18} color="#555" />
               </Pressable>
-
-              {/* Copy Hex Button */}
               <Pressable
                 style={styles.iconButton}
                 onPress={() => handleCopy(selectedItem.hex, "Hex")}
               >
                 <Ionicons name="copy-outline" size={18} color="#555" />
               </Pressable>
-
-              {/* Favorite Button */}
               <Pressable
                 style={[styles.iconButton, isFav && styles.favButtonActive]}
                 onPress={() => toggleFavorite(selectedItem.key)}
@@ -219,24 +224,13 @@ export default function FanScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F2F4F8",
-    overflow: "hidden",
-  },
-  loader: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  touchArea: {
-    flex: 1,
-    width: "100%",
-    zIndex: 10,
-  },
+  container: { flex: 1, backgroundColor: "#F2F4F8", overflow: "hidden" },
+  loader: { flex: 1, alignItems: "center", justifyContent: "center" },
+  touchArea: { flex: 1, width: "100%", zIndex: 10 },
+
   detailPanel: {
     position: "absolute",
-    bottom: 25,
+    bottom: 110,
     left: 20,
     right: 20,
     backgroundColor: "rgba(255,255,255,0.95)",
@@ -263,26 +257,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  infoContainer: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  colorCode: {
-    fontSize: 16,
-    fontWeight: "800",
-    color: "#222",
-  },
+  infoContainer: { flex: 1, justifyContent: "center" },
+  colorCode: { fontSize: 16, fontWeight: "800", color: "#222" },
   hexCode: {
     fontSize: 12,
     color: "#888",
     fontWeight: "600",
     marginTop: 2,
-    fontVariant: ["tabular-nums"], // Monospaced numbers
+    fontVariant: ["tabular-nums"],
   },
-  actions: {
-    flexDirection: "row",
-    gap: 8,
-  },
+  actions: { flexDirection: "row", gap: 8 },
   iconButton: {
     width: 36,
     height: 36,
@@ -291,12 +275,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  favButtonActive: {
-    backgroundColor: "#FFE5E5", // Light red background when active
-  },
+  favButtonActive: { backgroundColor: "#FFE5E5" },
   hintContainer: {
     position: "absolute",
-    top: 120,
+    bottom: 120,
     alignSelf: "center",
     backgroundColor: "rgba(0,0,0,0.6)",
     paddingVertical: 8,
@@ -304,13 +286,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     zIndex: 20,
   },
-  hintText: {
-    color: "white",
-    fontSize: 12,
-    fontWeight: "600",
-  },
+  hintText: { color: "white", fontSize: 12, fontWeight: "600" },
 
-  // Full Screen Styles
   fullScreenContainer: {
     flex: 1,
     alignItems: "center",
@@ -322,15 +299,8 @@ const styles = StyleSheet.create({
     right: 30,
     padding: 10,
     borderRadius: 20,
-    backgroundColor: "rgba(0,0,0,0.1)", // Subtle backing
+    backgroundColor: "rgba(0,0,0,0.1)",
   },
-  fullScreenInfo: {
-    position: "absolute",
-    bottom: 100,
-  },
-  fullScreenText: {
-    fontSize: 24,
-    fontWeight: "bold",
-    opacity: 0.8,
-  },
+  fullScreenInfo: { position: "absolute", bottom: 100 },
+  fullScreenText: { fontSize: 24, fontWeight: "bold", opacity: 0.8 },
 });
