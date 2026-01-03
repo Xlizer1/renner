@@ -11,7 +11,6 @@ export default function RootLayout() {
         name="fans/selection"
         options={{
           title: "Choose a Fan",
-          headerShown: true,
           headerBackTitle: "Home",
         }}
       />
@@ -19,8 +18,6 @@ export default function RootLayout() {
         name="fans/ncs"
         options={{
           title: "NCS Standard",
-          headerShown: true,
-          headerTransparent: true,
           headerTintColor: "#000",
         }}
       />
@@ -31,7 +28,6 @@ export default function RootLayout() {
         name="scan/results"
         options={{
           title: "Analysis Results",
-          headerShown: true,
           headerBackTitle: "Scan",
         }}
       />

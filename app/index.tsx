@@ -1,13 +1,15 @@
 import { Ionicons } from "@expo/vector-icons";
 import * as ImageManipulator from "expo-image-manipulator";
 import * as ImagePicker from "expo-image-picker";
-import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import React from "react";
 import {
   Alert,
   Dimensions,
+  Image,
   Pressable,
+  StyleSheet as RNStyleSheet,
   ScrollView,
   StyleSheet,
   Text,
@@ -16,8 +18,8 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const { width } = Dimensions.get("window");
-const GAP = 15;
-const CARD_WIDTH = (width - 40 - GAP) / 2; // (Screen - Padding - Gap) / 2
+const GAP = 12; // Tighter gap
+const CARD_WIDTH = (width - 40 - GAP) / 2;
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -55,70 +57,67 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar style="light" />
+
       <ScrollView contentContainerStyle={styles.content}>
-        {/* 1. MODERN HEADER */}
+        {/* Header */}
         <View style={styles.header}>
-          <View>
-            <Text style={styles.greeting}>Good Morning</Text>
-            <Text style={styles.subGreeting}>Ready to find your color?</Text>
+          <Image
+            source={require("@/assets/images/renner-italia.png")}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+          <View style={styles.headerButtons}>
+            <Pressable style={styles.profileBtn}>
+              <Ionicons name="person" size={20} color="#E0E0E0" />
+            </Pressable>
+            <Pressable style={styles.profileBtn}>
+              <Ionicons name="settings" size={20} color="#E0E0E0" />
+            </Pressable>
           </View>
-          <Pressable style={styles.profileBtn}>
-            <Ionicons name="person" size={20} color="#555" />
-          </Pressable>
         </View>
 
-        {/* 2. HERO CARD (Bento Main Item) */}
+        {/* --- HERO CARD (Cleaned Up) --- */}
         <Pressable
-          style={styles.heroWrapper}
+          style={({ pressed }) => [
+            styles.heroCard,
+            pressed && styles.heroPressed,
+          ]}
           onPress={() => router.push("/scan")}
         >
-          <LinearGradient
-            colors={["#4ECDC4", "#2EC4B6"]} // Teal Gradient
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={styles.heroCard}
-          >
-            <View style={styles.heroContent}>
-              <View style={styles.heroTextContainer}>
-                <View style={styles.heroBadge}>
-                  <Text style={styles.heroBadgeText}>NEW</Text>
-                </View>
-                <Text style={styles.heroTitle}>Scan Color</Text>
-                <Text style={styles.heroSubtitle}>
-                  Point your camera at any surface to find its NCS match.
-                </Text>
-              </View>
-              <View style={styles.heroIconCircle}>
-                <Ionicons name="camera" size={32} color="#2EC4B6" />
-              </View>
+          <View style={styles.heroContent}>
+            <View style={styles.heroTextContainer}>
+              {/* Badge Removed */}
+              <Text style={styles.heroTitle}>Scan Color</Text>
+              <Text style={styles.heroSubtitle}>Camera match.</Text>
             </View>
-          </LinearGradient>
+
+            <View style={styles.heroIconCircle}>
+              <Ionicons name="camera" size={32} color="#FFFFFF" />
+            </View>
+          </View>
+
+          <View style={styles.heroAccentLine} />
         </Pressable>
 
         <Text style={styles.sectionTitle}>Tools</Text>
 
-        {/* 3. SECONDARY GRID (Row) */}
+        {/* --- SECONDARY GRID (Compact) --- */}
         <View style={styles.gridRow}>
-          {/* Color Fans Card */}
           <ActionCard
             title="Color Fans"
-            subtitle="NCS, RAL & More"
+            subtitle="NCS & RAL"
             icon="color-filter"
-            color="#FF6B6B"
             onPress={() => router.push("/fans/selection")}
           />
 
-          {/* Pick Photo Card */}
           <ActionCard
             title="From Photo"
-            subtitle="Pick from Gallery"
+            subtitle="Gallery"
             icon="images"
-            color="#6C5CE7"
             onPress={pickImage}
           />
         </View>
-
-        {/* Future "Saved" Section can go here */}
       </ScrollView>
     </SafeAreaView>
   );
@@ -126,23 +125,25 @@ export default function HomeScreen() {
 
 // --- SUB COMPONENTS ---
 
-const ActionCard = ({ title, subtitle, icon, color, onPress }: any) => (
+const ActionCard = ({ title, subtitle, icon, onPress }: any) => (
   <Pressable
     style={({ pressed }) => [styles.actionCard, pressed && styles.pressed]}
     onPress={onPress}
   >
-    <View style={[styles.iconBox, { backgroundColor: color + "15" }]}>
-      <Ionicons name={icon} size={28} color={color} />
+    <View style={styles.iconBox}>
+      <Ionicons name={icon} size={24} color="#EEEEEE" />
     </View>
-    <Text style={styles.cardTitle}>{title}</Text>
-    <Text style={styles.cardSubtitle}>{subtitle}</Text>
+    <View>
+      <Text style={styles.cardTitle}>{title}</Text>
+      <Text style={styles.cardSubtitle}>{subtitle}</Text>
+    </View>
   </Pressable>
 );
 
 // --- STYLES ---
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F8F9FB" },
+  container: { flex: 1, backgroundColor: "#121212" },
   content: { padding: 20 },
 
   // Header
@@ -150,129 +151,128 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 30,
+    marginBottom: 24,
     marginTop: 10,
   },
+  headerButtons: {
+    flexDirection: "row",
+    gap: 10
+  },
+  // Adjust width/height to fit your specific logo aspect ratio
+  logo: {
+    width: 130,
+    height: 40,
+    // If your logo is black text, use tintColor to make it white:
+    // tintColor: '#FFFFFF'
+  },
   greeting: {
-    fontSize: 30,
+    fontSize: 28,
     fontWeight: "800",
-    color: "#1A1A1A",
+    color: "#FFFFFF",
     letterSpacing: -0.5,
   },
-  subGreeting: {
-    fontSize: 16,
-    color: "#8898AA",
-    marginTop: 4,
-    fontWeight: "500",
-  },
+  subGreeting: { fontSize: 15, color: "#888", marginTop: 2, fontWeight: "500" },
   profileBtn: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
-    backgroundColor: "white",
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: "#1E1E1E",
     alignItems: "center",
     justifyContent: "center",
-    borderWidth: 1,
-    borderColor: "#EEE",
-    shadowColor: "#000",
-    shadowOpacity: 0.05,
-    shadowRadius: 10,
-    elevation: 2,
+    borderWidth: RNStyleSheet.hairlineWidth,
+    borderColor: "#444",
   },
 
-  // Hero Card
-  heroWrapper: {
-    shadowColor: "#4ECDC4",
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.3,
-    shadowRadius: 15,
-    elevation: 8,
-    marginBottom: 30,
-  },
+  // HERO CARD
   heroCard: {
     borderRadius: 24,
     padding: 24,
-    height: 180,
+    height: 160, // Slightly reduced height
     justifyContent: "center",
+    marginBottom: 24,
+    backgroundColor: "#E0E0E0",
+    shadowColor: "#FFFFFF",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 12,
+    elevation: 5,
   },
+  heroPressed: { transform: [{ scale: 0.99 }], opacity: 0.9 },
+
   heroContent: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
   },
   heroTextContainer: { flex: 1, paddingRight: 20 },
-  heroBadge: {
-    backgroundColor: "rgba(255,255,255,0.2)",
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 12,
-    alignSelf: "flex-start",
-    marginBottom: 12,
-  },
-  heroBadgeText: {
-    color: "white",
-    fontSize: 10,
-    fontWeight: "800",
-    letterSpacing: 1,
-  },
+
   heroTitle: {
     fontSize: 28,
-    fontWeight: "800",
-    color: "white",
-    marginBottom: 6,
+    fontWeight: "900",
+    color: "#121212",
+    marginBottom: 4,
   },
-  heroSubtitle: {
-    fontSize: 14,
-    color: "rgba(255,255,255,0.9)",
-    lineHeight: 20,
-  },
+  heroSubtitle: { fontSize: 14, color: "#555", fontWeight: "500" },
+
   heroIconCircle: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    backgroundColor: "white",
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: "#121212",
     alignItems: "center",
     justifyContent: "center",
+  },
+  heroAccentLine: {
+    position: "absolute",
+    bottom: 24,
+    left: 24,
+    height: 3,
+    backgroundColor: "#121212",
+    borderRadius: 1.5,
+    width: 24,
   },
 
   // Grid
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: "700",
-    color: "#2D3436",
-    marginBottom: 15,
+    color: "#E0E0E0",
+    marginBottom: 12,
     marginLeft: 4,
   },
   gridRow: { flexDirection: "row", justifyContent: "space-between", gap: GAP },
 
-  // Action Cards
+  // ACTION CARDS (Compact)
   actionCard: {
     width: CARD_WIDTH,
-    backgroundColor: "white",
-    borderRadius: 24,
-    padding: 20,
+    height: CARD_WIDTH - 40, // Square Aspect Ratio (Compact)
+    backgroundColor: "#1E1E1E",
+    borderRadius: 20,
+    padding: 16, // Reduced padding
+    justifyContent: "space-between", // Push content to edges
+    borderWidth: RNStyleSheet.hairlineWidth,
+    borderColor: "#444",
 
-    // Modern Soft Shadow
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.04,
-    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
     elevation: 2,
   },
   pressed: { transform: [{ scale: 0.98 }] },
   iconBox: {
-    width: 48,
-    height: 48,
-    borderRadius: 16,
+    width: 40,
+    height: 40,
+    borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 16,
+    backgroundColor: "rgba(255,255,255,0.08)",
   },
   cardTitle: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: "700",
-    color: "#2D3436",
-    marginBottom: 4,
+    color: "#FFFFFF",
+    marginBottom: 2,
   },
-  cardSubtitle: { fontSize: 13, color: "#A4B0BE", lineHeight: 18 },
+  cardSubtitle: { fontSize: 12, color: "#888" },
 });

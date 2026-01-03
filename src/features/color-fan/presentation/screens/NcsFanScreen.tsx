@@ -1,14 +1,15 @@
 import { Ionicons } from "@expo/vector-icons";
 import * as Clipboard from "expo-clipboard";
 import { LinearGradient } from "expo-linear-gradient";
-import { useLocalSearchParams } from "expo-router"; // Import router params
+import { useLocalSearchParams, useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
   Modal,
   Pressable,
-  StatusBar,
+  StatusBar as RNStatusBar,
   StyleSheet,
   Text,
   View,
@@ -25,7 +26,7 @@ import { useFanGesture } from "@/src/features/color-fan/presentation/hooks/useFa
 import { useFanVirtualization } from "@/src/features/color-fan/presentation/hooks/useFanVirtualization";
 
 export default function FanScreen() {
-  // 1. Get Deep Link Param
+  const router = useRouter();
   const { targetKey } = useLocalSearchParams<{ targetKey: string }>();
 
   const [data, setData] = useState<NcsGroup[]>([]);
@@ -56,7 +57,6 @@ export default function FanScreen() {
           (item) => item.key === targetKey
         );
 
-        // Delay slightly to allow layout to settle
         setTimeout(() => {
           scrollToIndex(groupIndex, true);
         }, 300);
@@ -81,7 +81,10 @@ export default function FanScreen() {
     );
   };
 
-  if (loading) return <ActivityIndicator style={styles.loader} size="large" />;
+  if (loading)
+    return (
+      <ActivityIndicator style={styles.loader} size="large" color="#FFF" />
+    );
 
   const visibleItems = data
     .map((group, index) => ({ group, index }))
@@ -95,6 +98,8 @@ export default function FanScreen() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
+      <StatusBar style="light" />
+
       {/* Full Screen Modal */}
       <Modal
         visible={isFullScreen}
@@ -109,7 +114,7 @@ export default function FanScreen() {
               { backgroundColor: selectedItem.hex },
             ]}
           >
-            <StatusBar hidden />
+            <RNStatusBar hidden />
             <Pressable
               style={styles.closeButton}
               onPress={() => setIsFullScreen(false)}
@@ -140,19 +145,32 @@ export default function FanScreen() {
       </Modal>
 
       {/* Main View */}
-      <View
-        style={[
-          styles.container,
-          {
-            backgroundColor: selectedItem ? selectedItem.hex + "15" : "#F2F4F8",
-          },
-        ]}
-      >
+      <View style={styles.container}>
+        {/* Dynamic Background Tint (Subtle Glow) */}
+        {selectedItem && (
+          <View
+            style={[
+              StyleSheet.absoluteFill,
+              { backgroundColor: selectedItem.hex, opacity: 0.1 },
+            ]}
+          />
+        )}
+
+        {/* Vignette Gradient */}
         <LinearGradient
-          colors={["transparent", "rgba(0,0,0,0.05)"]}
+          colors={["transparent", "#121212"]}
           style={StyleSheet.absoluteFillObject}
           pointerEvents="none"
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
         />
+
+        {/* Header / Back Button Area */}
+        <View style={styles.headerOverlay}>
+          <Pressable onPress={() => router.back()} style={styles.backBtn}>
+            <Ionicons name="arrow-back" size={24} color="#FFF" />
+          </Pressable>
+        </View>
 
         <GestureDetector gesture={panGesture}>
           <View style={styles.touchArea}>
@@ -171,7 +189,7 @@ export default function FanScreen() {
           </View>
         </GestureDetector>
 
-        {/* Bottom Panel */}
+        {/* Bottom Panel (Dark Mode) */}
         {selectedItem ? (
           <View style={styles.detailPanel}>
             <Pressable
@@ -193,13 +211,13 @@ export default function FanScreen() {
                 style={styles.iconButton}
                 onPress={() => handleCopy(selectedItem.key, "Key")}
               >
-                <Ionicons name="text-outline" size={18} color="#555" />
+                <Ionicons name="text-outline" size={18} color="#FFF" />
               </Pressable>
               <Pressable
                 style={styles.iconButton}
                 onPress={() => handleCopy(selectedItem.hex, "Hex")}
               >
-                <Ionicons name="copy-outline" size={18} color="#555" />
+                <Ionicons name="copy-outline" size={18} color="#FFF" />
               </Pressable>
               <Pressable
                 style={[styles.iconButton, isFav && styles.favButtonActive]}
@@ -208,7 +226,7 @@ export default function FanScreen() {
                 <Ionicons
                   name={isFav ? "heart" : "heart-outline"}
                   size={20}
-                  color={isFav ? "#FF3B30" : "#555"}
+                  color={isFav ? "#FF3B30" : "#FFF"}
                 />
               </Pressable>
             </View>
@@ -224,16 +242,34 @@ export default function FanScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#F2F4F8", overflow: "hidden" },
+  container: { flex: 1, backgroundColor: "#121212", overflow: "hidden" },
   loader: { flex: 1, alignItems: "center", justifyContent: "center" },
   touchArea: { flex: 1, width: "100%", zIndex: 10 },
 
+  headerOverlay: {
+    position: "absolute",
+    top: 50,
+    left: 20,
+    zIndex: 50,
+  },
+  backBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: "rgba(30,30,30,0.8)",
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 1,
+    borderColor: "#333",
+  },
+
+  // Dark Panel
   detailPanel: {
     position: "absolute",
-    bottom: 110,
+    bottom: 50, // Moved down since we removed Tab Bar
     left: 20,
     right: 20,
-    backgroundColor: "rgba(255,255,255,0.95)",
+    backgroundColor: "#1E1E1E", // Dark Surface
     borderRadius: 20,
     padding: 12,
     flexDirection: "row",
@@ -241,11 +277,11 @@ const styles = StyleSheet.create({
     zIndex: 30,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.08,
+    shadowOpacity: 0.3,
     shadowRadius: 20,
     elevation: 5,
     borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.5)",
+    borderColor: "#333", // Subtle Border
   },
   previewBox: {
     width: 50,
@@ -253,15 +289,15 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     marginRight: 12,
     borderWidth: 1,
-    borderColor: "rgba(0,0,0,0.1)",
+    borderColor: "rgba(255,255,255,0.1)",
     alignItems: "center",
     justifyContent: "center",
   },
   infoContainer: { flex: 1, justifyContent: "center" },
-  colorCode: { fontSize: 16, fontWeight: "800", color: "#222" },
+  colorCode: { fontSize: 16, fontWeight: "800", color: "#FFFFFF" }, // White Text
   hexCode: {
     fontSize: 12,
-    color: "#888",
+    color: "#888", // Grey Subtext
     fontWeight: "600",
     marginTop: 2,
     fontVariant: ["tabular-nums"],
@@ -271,23 +307,27 @@ const styles = StyleSheet.create({
     width: 36,
     height: 36,
     borderRadius: 18,
-    backgroundColor: "#F0F2F5",
+    backgroundColor: "#2C2C2C", // Darker Button
     alignItems: "center",
     justifyContent: "center",
   },
-  favButtonActive: { backgroundColor: "#FFE5E5" },
+  favButtonActive: { backgroundColor: "#3D0000" }, // Dark Red BG
+
   hintContainer: {
     position: "absolute",
-    bottom: 120,
+    bottom: 60,
     alignSelf: "center",
-    backgroundColor: "rgba(0,0,0,0.6)",
+    backgroundColor: "rgba(30,30,30,0.8)",
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 20,
     zIndex: 20,
+    borderWidth: 1,
+    borderColor: "#333",
   },
-  hintText: { color: "white", fontSize: 12, fontWeight: "600" },
+  hintText: { color: "#AAA", fontSize: 12, fontWeight: "600" },
 
+  // Full Screen
   fullScreenContainer: {
     flex: 1,
     alignItems: "center",

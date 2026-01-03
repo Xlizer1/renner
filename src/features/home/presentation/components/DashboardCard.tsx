@@ -6,7 +6,7 @@ interface DashboardCardProps {
   title: string;
   subtitle: string;
   icon: keyof typeof Ionicons.glyphMap;
-  color: string;
+  color: string; // The accent color (e.g., Yellow, Blue)
   onPress: () => void;
 }
 
@@ -22,14 +22,17 @@ export const DashboardCard = ({
       style={({ pressed }) => [styles.card, pressed && styles.pressed]}
       onPress={onPress}
     >
-      <View style={[styles.iconContainer, { backgroundColor: color + "20" }]}>
-        <Ionicons name={icon} size={32} color={color} />
+      {/* Icon Box with 15% opacity of the accent color */}
+      <View style={[styles.iconContainer, { backgroundColor: color + "15" }]}>
+        <Ionicons name={icon} size={28} color={color} />
       </View>
+
       <View style={styles.textContainer}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.subtitle}>{subtitle}</Text>
       </View>
-      <Ionicons name="chevron-forward" size={24} color="#ccc" />
+
+      <Ionicons name="chevron-forward" size={20} color="#444" />
     </Pressable>
   );
 };
@@ -38,40 +41,45 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "white",
-    padding: 20,
+    backgroundColor: "#1E1E1E", // Dark Surface
+    padding: 16, // Slightly reduced padding for a tighter look
     borderRadius: 16,
-    marginBottom: 15,
-    // Shadows
+    marginBottom: 12,
+
+    // Borders for Dark Mode separation
+    borderWidth: 1,
+    borderColor: "#333",
+
+    // Subtle Shadow
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.05,
-    shadowRadius: 10,
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
     elevation: 2,
   },
   pressed: {
     transform: [{ scale: 0.98 }],
-    opacity: 0.9,
+    backgroundColor: "#252525", // Slightly lighter when pressed
   },
   iconContainer: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     borderRadius: 12,
     alignItems: "center",
     justifyContent: "center",
-    marginRight: 15,
+    marginRight: 16,
   },
   textContainer: {
     flex: 1,
   },
   title: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: "700",
-    color: "#333",
+    color: "#FFFFFF", // White Text
     marginBottom: 4,
   },
   subtitle: {
-    fontSize: 14,
-    color: "#888",
+    fontSize: 13,
+    color: "#888", // Grey Subtext
   },
 });
