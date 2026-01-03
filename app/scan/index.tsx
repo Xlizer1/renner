@@ -86,7 +86,12 @@ export default function CameraScreen() {
 
   return (
     <View style={styles.container}>
-      <CameraView style={styles.camera} ref={cameraRef} facing="back">
+      <CameraView
+        style={styles.camera}
+        ref={cameraRef}
+        facing="back"
+        enableTorch={true}
+      >
         <SafeAreaView style={styles.uiContainer}>
           {/* Header */}
           <TouchableOpacity
