@@ -1,5 +1,7 @@
 import { useHistory } from "@/src/core/context/HistoryContext";
+import { ColorMatcher } from "@/src/features/scan/domain/colorMatcher";
 import { Ionicons } from "@expo/vector-icons";
+import Constants from "expo-constants";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
@@ -15,8 +17,15 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-// REPLACE WITH YOUR IP
-const API_URL = "http://192.168.0.169:3000"; // Base URL
+// Helper to get the correct URL
+const getApiUrl = () => {
+  // In development, grab the host IP dynamically from Expo Go
+  const debuggerHost = Constants.expoConfig?.hostUri;
+  const localhost = debuggerHost?.split(":")[0];
+  return `http://${localhost}:3000`;
+};
+
+const API_URL = getApiUrl();
 
 export default function ResultsScreen() {
   const router = useRouter();
@@ -55,7 +64,12 @@ export default function ResultsScreen() {
       });
 
       const data = await response.json();
-      setResults(data);
+      const matches = ColorMatcher.findClosestMatches(data.detectedColor, 5);
+
+      setResults({
+        detectedColor: data.detectedColor,
+        matches: matches,
+      });
       setLoading(false);
     } catch (error) {
       handleError(error);
@@ -63,20 +77,19 @@ export default function ResultsScreen() {
   };
 
   // Mode B: Send Hex (History) -> NEW FUNCTION
-  const findMatchesForHex = async (colorHex: string) => {
-    try {
-      const response = await fetch(`${API_URL}/match`, {
-        method: "POST",
-        body: JSON.stringify({ hex: colorHex }),
-        headers: { "Content-Type": "application/json" },
-      });
+  const findMatchesForHex = (colorHex: string) => {
+    setLoading(true);
 
-      const data = await response.json();
-      setResults(data);
-      setLoading(false);
-    } catch (error) {
-      handleError(error);
-    }
+    // 1. Use local logic instead of fetch
+    const matches = ColorMatcher.findClosestMatches(colorHex, 5);
+
+    // 2. Format result to match what your UI expects
+    setResults({
+      detectedColor: colorHex,
+      matches: matches, // { item: NcsItem, distance: number }[]
+    });
+
+    setLoading(false);
   };
 
   const handleError = (error: any) => {

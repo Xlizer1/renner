@@ -5,36 +5,41 @@ import React, { useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 import { useHistory } from "@/src/core/context/HistoryContext";
-import { NcsGroup } from "@/src/core/types/ncs";
+import { NcsGroup, NcsItem } from "@/src/core/types/ncs";
 import { NcsRepository } from "@/src/features/color-fan/data/ncsRepository";
+
+type HistoryItem =
+  | (NcsItem & { isRaw?: false }) // Case A: Real NCS Color (Full Data)
+  | { key: string; hex: string; isRaw: true };
 
 export default function HistoryScreen() {
   const router = useRouter();
   const { history, clearHistory } = useHistory();
-  const [historyItems, setHistoryItems] = useState<any[]>([]);
+  const [historyItems, setHistoryItems] = useState<HistoryItem[]>([]);
 
   useEffect(() => {
     NcsRepository.getColors().then((groups: NcsGroup[]) => {
       const allColors = groups.flatMap((g) => g.strip);
 
       const found = history
-        .map((historyKey) => {
+        .map((historyKey): HistoryItem | null => {
+          // Add return type annotation
           // 1. Try to find matched NCS Color
           const ncsMatch = allColors.find((c) => c.key === historyKey);
 
-          if (ncsMatch) return ncsMatch;
+          if (ncsMatch) return { ...ncsMatch, isRaw: false };
 
           // 2. If not found, assume it is a Raw Hex (from Scan)
           if (historyKey.startsWith("#")) {
             return {
-              key: historyKey.toUpperCase(), // Use Hex as the title
+              key: historyKey.toUpperCase(),
               hex: historyKey,
-              isRaw: true, // Flag to identify it's not a real NCS fan item
+              isRaw: true, // This now matches the second part of the Union Type
             };
           }
           return null;
         })
-        .filter((item) => item !== null);
+        .filter((item): item is HistoryItem => item !== null); // Type guard
 
       setHistoryItems(found);
     });

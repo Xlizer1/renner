@@ -88,16 +88,16 @@ export default function FanScreen() {
     Alert.alert("Copied!", `${type} (${text}) copied to clipboard.`);
   };
 
-  // ❌ DELETED: const toggleFavorite = ... (Local function removed)
+  const visibleItems = React.useMemo(() => {
+    return data
+      .map((group, index) => ({ group, index }))
+      .slice(min, max);
+  }, [data, min, max]);
 
   if (loading)
     return (
       <ActivityIndicator style={styles.loader} size="large" color="#FFF" />
     );
-
-  const visibleItems = data
-    .map((group, index) => ({ group, index }))
-    .slice(min, max);
 
   const selectedItem = selection
     ? data[selection.groupIndex].strip[selection.itemIndex]
