@@ -1,5 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import * as Clipboard from "expo-clipboard";
+import { Image } from "expo-image"; // <--- ADD THIS IMPORT
 import { LinearGradient } from "expo-linear-gradient";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -23,17 +24,23 @@ import { useFavorites } from "@/src/core/context/FavoritesContext";
 import { useHistory } from "@/src/core/context/HistoryContext";
 import { NcsGroup, SelectionPath } from "@/src/core/types/ncs";
 import { NcsRepository } from "@/src/features/color-fan/data/ncsRepository";
+import { RennerRepository } from "@/src/features/color-fan/data/rennerRepository"; // Check path
 import FanStrip from "@/src/features/color-fan/presentation/components/FanStrip";
 import { useFanGesture } from "@/src/features/color-fan/presentation/hooks/useFanGesture";
 import { useFanVirtualization } from "@/src/features/color-fan/presentation/hooks/useFanVirtualization";
 
-export default function FanScreen() {
-  const router = useRouter();
+interface FanScreenProps {
+  mode?: "ncs" | "renner";
+  collectionId?: string;
+}
 
-  // 1. USE GLOBAL CONTEXT (The Brain)
+export default function FanScreen({
+  mode = "ncs",
+  collectionId = "",
+}: FanScreenProps) {
+  const router = useRouter();
   const { toggleFavorite, isFavorite } = useFavorites();
   const { addToHistory } = useHistory();
-
   const { targetKey } = useLocalSearchParams<{ targetKey: string }>();
 
   const [data, setData] = useState<NcsGroup[]>([]);
@@ -41,39 +48,39 @@ export default function FanScreen() {
   const [selection, setSelection] = useState<SelectionPath | null>(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
 
-  const openFullScreen = () => {
-    if (selectedItem) {
-      addToHistory(selectedItem.key); // <--- Save to History
-      setIsFullScreen(true);
-    }
-  };
-
+  // --- DATA LOADING ---
   useEffect(() => {
-    NcsRepository.getColors().then((result) => {
-      setData(result);
-      setLoading(false);
-    });
-  }, []);
+    setLoading(true);
 
+    if (mode === "ncs") {
+      NcsRepository.getColors().then((result) => {
+        setData(result);
+        setLoading(false);
+      });
+    } else {
+      // Renner Mode: Pass the collection ID (chroma, cs, tm)
+      RennerRepository.getColors(collectionId).then((result) => {
+        setData(result);
+        setLoading(false);
+      });
+    }
+  }, [mode, collectionId]);
+
+  // --- GESTURES ---
   const { rotation, panGesture, scrollToIndex } = useFanGesture(data.length);
   const { min, max } = useFanVirtualization(rotation, data.length);
 
-  // --- DEEP LINK LOGIC ---
+  // --- DEEP LINKING ---
   useEffect(() => {
     if (!loading && data.length > 0 && targetKey) {
       const groupIndex = data.findIndex((g) =>
         g.strip.some((item) => item.key === targetKey)
       );
-
       if (groupIndex !== -1) {
         const itemIndex = data[groupIndex].strip.findIndex(
           (item) => item.key === targetKey
         );
-
-        setTimeout(() => {
-          scrollToIndex(groupIndex, true);
-        }, 300);
-
+        setTimeout(() => scrollToIndex(groupIndex, true), 300);
         setSelection({ groupIndex, itemIndex });
       }
     }
@@ -89,9 +96,7 @@ export default function FanScreen() {
   };
 
   const visibleItems = React.useMemo(() => {
-    return data
-      .map((group, index) => ({ group, index }))
-      .slice(min, max);
+    return data.map((group, index) => ({ group, index })).slice(min, max);
   }, [data, min, max]);
 
   if (loading)
@@ -103,50 +108,54 @@ export default function FanScreen() {
     ? data[selection.groupIndex].strip[selection.itemIndex]
     : null;
 
-  // 2. CHECK GLOBAL STATE
   const isFav = selectedItem ? isFavorite(selectedItem.key) : false;
+
+  // HELPER: Get background style safely (Handle Texture vs Color)
+  const getBackgroundStyle = () => {
+    if (!selectedItem) return {};
+    if (selectedItem.isTexture) return { backgroundColor: "#000" }; // Dark bg for textures
+    return { backgroundColor: selectedItem.hex as string };
+  };
+
+  const openFullScreen = () => {
+    if (selectedItem) {
+      addToHistory(selectedItem.key);
+      setIsFullScreen(true);
+    }
+  };
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <StatusBar style="light" />
 
-      {/* Full Screen Modal */}
+      {/* --- FULL SCREEN MODAL --- */}
       <Modal
         visible={isFullScreen}
         animationType="fade"
-        transparent={false}
         onRequestClose={() => setIsFullScreen(false)}
       >
         {selectedItem && (
-          <View
-            style={[
-              styles.fullScreenContainer,
-              { backgroundColor: selectedItem.hex },
-            ]}
-          >
+          <View style={[styles.fullScreenContainer, getBackgroundStyle()]}>
             <RNStatusBar hidden />
+
+            {/* If Texture, render Full Image */}
+            {selectedItem.isTexture && (
+              <Image
+                source={selectedItem.hex} // hex holds the ID
+                style={StyleSheet.absoluteFill}
+                contentFit="cover"
+              />
+            )}
+
             <Pressable
               style={styles.closeButton}
               onPress={() => setIsFullScreen(false)}
             >
-              <Ionicons
-                name="close"
-                size={30}
-                color={
-                  parseInt(selectedItem.blackness) > 50 ? "white" : "black"
-                }
-              />
+              <Ionicons name="close" size={30} color="#FFF" />
             </Pressable>
+
             <View style={styles.fullScreenInfo}>
-              <Text
-                style={[
-                  styles.fullScreenText,
-                  {
-                    color:
-                      parseInt(selectedItem.blackness) > 50 ? "white" : "black",
-                  },
-                ]}
-              >
+              <Text style={[styles.fullScreenText, { color: "#FFF" }]}>
                 {selectedItem.key}
               </Text>
             </View>
@@ -154,13 +163,14 @@ export default function FanScreen() {
         )}
       </Modal>
 
-      {/* Main View */}
+      {/* --- MAIN VIEW --- */}
       <View style={styles.container}>
-        {selectedItem && (
+        {/* Dynamic Background */}
+        {selectedItem && !selectedItem.isTexture && (
           <View
             style={[
               StyleSheet.absoluteFill,
-              { backgroundColor: selectedItem.hex, opacity: 0.1 },
+              { backgroundColor: selectedItem.hex as string, opacity: 0.1 },
             ]}
           />
         )}
@@ -169,8 +179,6 @@ export default function FanScreen() {
           colors={["transparent", "#121212"]}
           style={StyleSheet.absoluteFillObject}
           pointerEvents="none"
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
         />
 
         <View style={styles.headerOverlay}>
@@ -196,21 +204,43 @@ export default function FanScreen() {
           </View>
         </GestureDetector>
 
-        {/* Bottom Panel */}
+        {/* --- BOTTOM PANEL --- */}
         {selectedItem ? (
           <View style={styles.detailPanel}>
+            {/* Tiny Preview Box */}
             <Pressable
-              style={[styles.previewBox, { backgroundColor: selectedItem.hex }]}
+              style={[
+                styles.previewBox,
+                // Only set BG color if NOT texture
+                !selectedItem.isTexture && {
+                  backgroundColor: selectedItem.hex as string,
+                },
+              ]}
               onPress={openFullScreen}
             >
-              <Ionicons name="expand" size={16} color="rgba(0,0,0,0.3)" />
+              {selectedItem.isTexture ? (
+                <Image
+                  source={selectedItem.hex}
+                  style={{ width: "100%", height: "100%" }}
+                  contentFit="cover"
+                />
+              ) : (
+                <Ionicons name="expand" size={16} color="rgba(0,0,0,0.3)" />
+              )}
             </Pressable>
 
             <View style={styles.infoContainer}>
               <Text style={styles.colorCode}>{selectedItem.key}</Text>
-              <Text style={styles.hexCode}>
-                {selectedItem.hex.toUpperCase()}
-              </Text>
+
+              {/* Only show Hex if it's a real color */}
+              {!selectedItem.isTexture && (
+                <Text style={styles.hexCode}>
+                  {(selectedItem.hex as string).toUpperCase()}
+                </Text>
+              )}
+              {selectedItem.isTexture && (
+                <Text style={styles.hexCode}>Wood Finish</Text>
+              )}
             </View>
 
             <View style={styles.actions}>
@@ -220,19 +250,20 @@ export default function FanScreen() {
               >
                 <Ionicons name="text-outline" size={18} color="#FFF" />
               </Pressable>
-              <Pressable
-                style={styles.iconButton}
-                onPress={() => handleCopy(selectedItem.hex, "Hex")}
-              >
-                <Ionicons name="copy-outline" size={18} color="#FFF" />
-              </Pressable>
 
-              {/* 3. TRIGGER GLOBAL TOGGLE */}
+              {/* Only show copy HEX button if it's a color */}
+              {!selectedItem.isTexture && (
+                <Pressable
+                  style={styles.iconButton}
+                  onPress={() => handleCopy(selectedItem.hex as string, "Hex")}
+                >
+                  <Ionicons name="copy-outline" size={18} color="#FFF" />
+                </Pressable>
+              )}
+
               <Pressable
                 style={[styles.iconButton, isFav && styles.favButtonActive]}
-                onPress={() => {
-                  toggleFavorite(selectedItem.key);
-                }}
+                onPress={() => toggleFavorite(selectedItem.key)}
               >
                 <Ionicons
                   name={isFav ? "heart" : "heart-outline"}
@@ -252,6 +283,7 @@ export default function FanScreen() {
   );
 }
 
+// ... Keep existing styles
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#121212", overflow: "hidden" },
   loader: { flex: 1, alignItems: "center", justifyContent: "center" },
@@ -302,6 +334,7 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255,255,255,0.1)",
     alignItems: "center",
     justifyContent: "center",
+    overflow: "hidden", // Important for image clipping
   },
   infoContainer: { flex: 1, justifyContent: "center" },
   colorCode: { fontSize: 16, fontWeight: "800", color: "#FFFFFF" },
@@ -348,7 +381,7 @@ const styles = StyleSheet.create({
     right: 30,
     padding: 10,
     borderRadius: 20,
-    backgroundColor: "rgba(0,0,0,0.1)",
+    backgroundColor: "rgba(0,0,0,0.4)", // Darker background for visibility on wood
   },
   fullScreenInfo: { position: "absolute", bottom: 100 },
   fullScreenText: { fontSize: 24, fontWeight: "bold", opacity: 0.8 },

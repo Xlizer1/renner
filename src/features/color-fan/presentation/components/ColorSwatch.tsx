@@ -1,7 +1,8 @@
 /* eslint-disable react/display-name */
 import { NcsItem } from "@/src/core/types/ncs";
+import { Image } from "expo-image"; // <--- IMPORT THIS
 import React, { memo } from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 interface Props {
   item: NcsItem;
@@ -10,11 +11,33 @@ interface Props {
 }
 
 const ColorSwatch = memo(({ item, isSelected, onPress }: Props) => {
+  // 1. TEXTURE MODE (Renner Wood)
+  if (item.isTexture) {
+    return (
+      <Pressable
+        style={[styles.container, isSelected && styles.selected]}
+        onPress={onPress}
+      >
+        <Image
+          source={item.hex} // 'hex' holds the require(id) here
+          style={StyleSheet.absoluteFill}
+          contentFit="cover"
+          cachePolicy="memory-disk" // Critical for performance
+        />
+        {/* Overlay to make text readable on wood */}
+        <View style={styles.textOverlay}>
+          <Text style={[styles.text, styles.textureText]}>{item.key}</Text>
+        </View>
+      </Pressable>
+    );
+  }
+
+  // 2. STANDARD COLOR MODE (NCS)
   return (
     <Pressable
       style={[
         styles.container,
-        { backgroundColor: item.hex },
+        { backgroundColor: item.hex as string }, // Cast to string
         isSelected && styles.selected,
       ]}
       onPress={onPress}
@@ -32,7 +55,8 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     paddingLeft: 8,
-    borderWidth: 0, // Stable layout
+    borderWidth: 0,
+    overflow: "hidden", // Ensures image doesn't bleed out
   },
   selected: {
     borderColor: "#007AFF",
@@ -47,6 +71,20 @@ const styles = StyleSheet.create({
   selectedText: {
     color: "#000",
     fontWeight: "900",
+  },
+  // Specific styles for text on top of wood images
+  textOverlay: {
+    position: "absolute",
+    bottom: 5,
+    left: 5,
+    backgroundColor: "rgba(255,255,255,0.8)",
+    paddingHorizontal: 4,
+    paddingVertical: 2,
+    borderRadius: 4,
+  },
+  textureText: {
+    color: "#000",
+    fontSize: 9,
   },
 });
 

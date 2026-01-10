@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -38,17 +38,8 @@ export default function ResultsScreen() {
   const [results, setResults] = useState<any>(null);
   const [fullScreenColor, setFullScreenColor] = useState<string | null>(null);
 
-  // --- 1. DETERMINE MODE ---
-  useEffect(() => {
-    if (uri) {
-      analyzeImage(uri);
-    } else if (hex) {
-      findMatchesForHex(hex);
-    }
-  }, [uri, hex]);
-
   // Mode A: Upload Image (Camera/Gallery)
-  const analyzeImage = async (imageUri: string) => {
+  const analyzeImage = useCallback(async (imageUri: string) => {
     try {
       const formData = new FormData();
       formData.append("image", {
@@ -74,7 +65,17 @@ export default function ResultsScreen() {
     } catch (error) {
       handleError(error);
     }
-  };
+  }, []);
+
+  
+  // --- 1. DETERMINE MODE ---
+  useEffect(() => {
+    if (uri) {
+      analyzeImage(uri);
+    } else if (hex) {
+      findMatchesForHex(hex);
+    }
+  }, [uri, hex, analyzeImage]);
 
   // Mode B: Send Hex (History) -> NEW FUNCTION
   const findMatchesForHex = (colorHex: string) => {

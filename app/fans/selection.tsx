@@ -5,21 +5,35 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { FlatList, Pressable, StyleSheet, View } from "react-native";
 
-// Mock Data for available fans
 const FANS = [
   {
     id: "ncs",
     name: "NCS Standard",
     desc: "Natural Color System® 2050 colors",
-    color: "#F1C40F", // Gold/Yellow icon
-    route: "/fans/ncs" as const,
+    color: "#F1C40F",
+    route: "/fans/ncs", // Static Route
+  },
+  // --- NEW SEPARATE FANS ---
+  {
+    id: "chroma",
+    name: "Renner Chroma",
+    desc: "High coverage pigmented finishes",
+    color: "#E91E63", // Pink/Red icon
+    route: "/fans/renner/chroma", // Dynamic Route
   },
   {
-    id: "renner",
-    name: "Renner",
-    desc: "Wood coatings & specialized finishes",
-    color: "#007AFF", // Blue icon
-    route: null,
+    id: "cs",
+    name: "Renner CS",
+    desc: "Special effects and stains",
+    color: "#9C27B0", // Purple icon
+    route: "/fans/renner/cs",
+  },
+  {
+    id: "tm",
+    name: "Renner TM-M006",
+    desc: "Wood tones matching system",
+    color: "#795548", // Brown icon
+    route: "/fans/renner/tm",
   },
 ];
 
@@ -45,7 +59,8 @@ export default function FanSelectionScreen() {
             icon="albums"
             color={item.color}
             onPress={() => {
-              if (item.route) router.push(item.route);
+              // @ts-ignore - Dynamic routes can be tricky in TS
+              router.push(item.route);
             }}
           />
         )}
@@ -54,15 +69,10 @@ export default function FanSelectionScreen() {
   );
 }
 
+// ... styles remain the same
 const styles = StyleSheet.create({
-  // Changed from Light (#F7F9FC) to Dark (#121212)
   container: { flex: 1, backgroundColor: "#121212", paddingTop: 80 },
-  headerOverlay: {
-    position: "absolute",
-    top: 50,
-    left: 20,
-    zIndex: 50,
-  },
+  headerOverlay: { position: "absolute", top: 50, left: 20, zIndex: 50 },
   backBtn: {
     width: 40,
     height: 40,
