@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import * as Clipboard from "expo-clipboard";
-import { Image } from "expo-image"; // <--- ADD THIS IMPORT
+import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -24,7 +24,7 @@ import { useFavorites } from "@/src/core/context/FavoritesContext";
 import { useHistory } from "@/src/core/context/HistoryContext";
 import { NcsGroup, SelectionPath } from "@/src/core/types/ncs";
 import { NcsRepository } from "@/src/features/color-fan/data/ncsRepository";
-import { RennerRepository } from "@/src/features/color-fan/data/rennerRepository"; // Check path
+import { RennerRepository } from "@/src/features/color-fan/data/rennerRepository";
 import FanStrip from "@/src/features/color-fan/presentation/components/FanStrip";
 import { useFanGesture } from "@/src/features/color-fan/presentation/hooks/useFanGesture";
 import { useFanVirtualization } from "@/src/features/color-fan/presentation/hooks/useFanVirtualization";
@@ -58,7 +58,6 @@ export default function FanScreen({
         setLoading(false);
       });
     } else {
-      // Renner Mode: Pass the collection ID (chroma, cs, tm)
       RennerRepository.getColors(collectionId).then((result) => {
         setData(result);
         setLoading(false);
@@ -110,10 +109,9 @@ export default function FanScreen({
 
   const isFav = selectedItem ? isFavorite(selectedItem.key) : false;
 
-  // HELPER: Get background style safely (Handle Texture vs Color)
   const getBackgroundStyle = () => {
     if (!selectedItem) return {};
-    if (selectedItem.isTexture) return { backgroundColor: "#000" }; // Dark bg for textures
+    if (selectedItem.isTexture) return { backgroundColor: "#000" };
     return { backgroundColor: selectedItem.hex as string };
   };
 
@@ -141,8 +139,12 @@ export default function FanScreen({
             {/* If Texture, render Full Image */}
             {selectedItem.isTexture && (
               <Image
-                source={selectedItem.hex} // hex holds the ID
-                style={StyleSheet.absoluteFill}
+                source={selectedItem.hex}
+                style={[
+                  StyleSheet.absoluteFill,
+                  // --- FIX: Zoom in if it is CS ---
+                  selectedItem.hue === "CS" && { transform: [{ scale: 2.5 }] },
+                ]}
                 contentFit="cover"
               />
             )}
@@ -211,7 +213,6 @@ export default function FanScreen({
             <Pressable
               style={[
                 styles.previewBox,
-                // Only set BG color if NOT texture
                 !selectedItem.isTexture && {
                   backgroundColor: selectedItem.hex as string,
                 },
@@ -221,7 +222,13 @@ export default function FanScreen({
               {selectedItem.isTexture ? (
                 <Image
                   source={selectedItem.hex}
-                  style={{ width: "100%", height: "100%" }}
+                  style={[
+                    { width: "100%", height: "100%" },
+                    // Optional: You can apply the zoom to the preview icon too if you want
+                    selectedItem.hue === "CS" && {
+                      transform: [{ scale: 1.5 }],
+                    },
+                  ]}
                   contentFit="cover"
                 />
               ) : (
@@ -232,7 +239,6 @@ export default function FanScreen({
             <View style={styles.infoContainer}>
               <Text style={styles.colorCode}>{selectedItem.key}</Text>
 
-              {/* Only show Hex if it's a real color */}
               {!selectedItem.isTexture && (
                 <Text style={styles.hexCode}>
                   {(selectedItem.hex as string).toUpperCase()}
@@ -251,7 +257,6 @@ export default function FanScreen({
                 <Ionicons name="text-outline" size={18} color="#FFF" />
               </Pressable>
 
-              {/* Only show copy HEX button if it's a color */}
               {!selectedItem.isTexture && (
                 <Pressable
                   style={styles.iconButton}
@@ -283,7 +288,6 @@ export default function FanScreen({
   );
 }
 
-// ... Keep existing styles
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#121212", overflow: "hidden" },
   loader: { flex: 1, alignItems: "center", justifyContent: "center" },
@@ -334,7 +338,7 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255,255,255,0.1)",
     alignItems: "center",
     justifyContent: "center",
-    overflow: "hidden", // Important for image clipping
+    overflow: "hidden",
   },
   infoContainer: { flex: 1, justifyContent: "center" },
   colorCode: { fontSize: 16, fontWeight: "800", color: "#FFFFFF" },
@@ -381,7 +385,7 @@ const styles = StyleSheet.create({
     right: 30,
     padding: 10,
     borderRadius: 20,
-    backgroundColor: "rgba(0,0,0,0.4)", // Darker background for visibility on wood
+    backgroundColor: "rgba(0,0,0,0.4)",
   },
   fullScreenInfo: { position: "absolute", bottom: 100 },
   fullScreenText: { fontSize: 24, fontWeight: "bold", opacity: 0.8 },

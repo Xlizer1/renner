@@ -1,6 +1,6 @@
 /* eslint-disable react/display-name */
 import { NcsItem } from "@/src/core/types/ncs";
-import { Image } from "expo-image"; // <--- IMPORT THIS
+import { Image } from "expo-image";
 import React, { memo } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
@@ -13,18 +13,27 @@ interface Props {
 const ColorSwatch = memo(({ item, isSelected, onPress }: Props) => {
   // 1. TEXTURE MODE (Renner Wood)
   if (item.isTexture) {
+    // Check if this item belongs to the "CS" fan
+    const isCS = item.hue === "CS";
+
     return (
       <Pressable
         style={[styles.container, isSelected && styles.selected]}
         onPress={onPress}
       >
         <Image
-          source={item.hex} // 'hex' holds the require(id) here
-          style={StyleSheet.absoluteFill}
+          source={item.hex}
+          style={[
+            styles.image,
+            // Apply Zoom only for CS items
+            isCS && { transform: [{ scale: 2.5 }] },
+          ]}
           contentFit="cover"
-          cachePolicy="memory-disk" // Critical for performance
+          transition={0}
+          cachePolicy="memory-disk"
+          allowDownscaling={true}
+          recyclingKey={item.key}
         />
-        {/* Overlay to make text readable on wood */}
         <View style={styles.textOverlay}>
           <Text style={[styles.text, styles.textureText]}>{item.key}</Text>
         </View>
@@ -32,12 +41,12 @@ const ColorSwatch = memo(({ item, isSelected, onPress }: Props) => {
     );
   }
 
-  // 2. STANDARD COLOR MODE (NCS)
+  // 2. STANDARD COLOR MODE
   return (
     <Pressable
       style={[
         styles.container,
-        { backgroundColor: item.hex as string }, // Cast to string
+        { backgroundColor: item.hex as string },
         isSelected && styles.selected,
       ]}
       onPress={onPress}
@@ -56,7 +65,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingLeft: 8,
     borderWidth: 0,
-    overflow: "hidden", // Ensures image doesn't bleed out
+    overflow: "hidden", // Important: Clips the zoomed image so it stays inside the box
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+    position: "absolute",
   },
   selected: {
     borderColor: "#007AFF",
@@ -72,7 +86,6 @@ const styles = StyleSheet.create({
     color: "#000",
     fontWeight: "900",
   },
-  // Specific styles for text on top of wood images
   textOverlay: {
     position: "absolute",
     bottom: 5,

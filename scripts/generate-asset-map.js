@@ -22,7 +22,8 @@ function getImages(dir, fileList = []) {
     } else {
       if (
         file.toLowerCase().endsWith(".png") ||
-        file.toLowerCase().endsWith(".jpg")
+        file.toLowerCase().endsWith(".jpg") ||
+        file.toLowerCase().endsWith(".jpeg")
       ) {
         // We store the relative path from the ASSETS_DIR root
         // e.g. "CHROMA/chroma_rc1000.png"
