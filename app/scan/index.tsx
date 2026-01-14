@@ -39,10 +39,9 @@ export default function CameraScreen() {
     if (cameraRef.current && !processing) {
       setProcessing(true);
       try {
-        // 1. Take Photo
         const photo = await cameraRef.current.takePictureAsync({
           quality: 0.5,
-          skipProcessing: true, // Faster
+          skipProcessing: true,
         });
 
         if (photo) {
@@ -60,7 +59,7 @@ export default function CameraScreen() {
     imgWidth: number,
     imgHeight: number
   ) => {
-    // 1. Crop on phone (save bandwidth)
+    // Crop the center 20x20 pixels
     const result = await ImageManipulator.manipulateAsync(
       uri,
       [
@@ -73,10 +72,9 @@ export default function CameraScreen() {
           },
         },
       ],
-      { format: ImageManipulator.SaveFormat.PNG } // No base64 needed, just file
+      { format: ImageManipulator.SaveFormat.PNG }
     );
 
-    // 2. Pass the file URI to the results page
     router.push({
       pathname: "/scan/results",
       params: { uri: result.uri },
@@ -90,7 +88,7 @@ export default function CameraScreen() {
         style={styles.camera}
         ref={cameraRef}
         facing="back"
-        enableTorch={true}
+        enableTorch={false} // <--- CHANGED TO FALSE
       >
         <SafeAreaView style={styles.uiContainer}>
           {/* Header */}
