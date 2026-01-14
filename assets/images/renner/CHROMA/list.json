@@ -1,2 +1,726 @@
 [
+  {
+    "code": "RC 1000",
+    "url": "assets/images/renner/CHROMA/RC_1000.png"
+  },
+  {
+    "code": "RC 1001",
+    "url": "assets/images/renner/CHROMA/RC_1001.png"
+  },
+  {
+    "code": "RC 1002",
+    "url": "assets/images/renner/CHROMA/RC_1002.png"
+  },
+  {
+    "code": "RC 1003",
+    "url": "assets/images/renner/CHROMA/RC_1003.png"
+  },
+  {
+    "code": "RC 1004",
+    "url": "assets/images/renner/CHROMA/RC_1004.png"
+  },
+  {
+    "code": "RC 1006",
+    "url": "assets/images/renner/CHROMA/RC_1006.png"
+  },
+  {
+    "code": "RC 1007",
+    "url": "assets/images/renner/CHROMA/RC_1007.png"
+  },
+  {
+    "code": "RC 1011",
+    "url": "assets/images/renner/CHROMA/RC_1011.png"
+  },
+  {
+    "code": "RC 1012",
+    "url": "assets/images/renner/CHROMA/RC_1012.png"
+  },
+  {
+    "code": "RC 1013",
+    "url": "assets/images/renner/CHROMA/RC_1013.png"
+  },
+  {
+    "code": "RC 1014",
+    "url": "assets/images/renner/CHROMA/RC_1014.png"
+  },
+  {
+    "code": "RC 1015",
+    "url": "assets/images/renner/CHROMA/RC_1015.png"
+  },
+  {
+    "code": "RC 1016",
+    "url": "assets/images/renner/CHROMA/RC_1016.png"
+  },
+  {
+    "code": "RC 1017",
+    "url": "assets/images/renner/CHROMA/RC_1017.png"
+  },
+  {
+    "code": "RC 1018",
+    "url": "assets/images/renner/CHROMA/RC_1018.png"
+  },
+  {
+    "code": "RC 1019",
+    "url": "assets/images/renner/CHROMA/RC_1019.png"
+  },
+  {
+    "code": "RC 1020",
+    "url": "assets/images/renner/CHROMA/RC_1020.png"
+  },
+  {
+    "code": "RC 1023",
+    "url": "assets/images/renner/CHROMA/RC_1023.png"
+  },
+  {
+    "code": "RC 1024",
+    "url": "assets/images/renner/CHROMA/RC_1024.png"
+  },
+  {
+    "code": "RC 1027",
+    "url": "assets/images/renner/CHROMA/RC_1027.png"
+  },
+  {
+    "code": "RC 1028",
+    "url": "assets/images/renner/CHROMA/RC_1028.png"
+  },
+  {
+    "code": "RC 1032",
+    "url": "assets/images/renner/CHROMA/RC_1032.png"
+  },
+  {
+    "code": "RC 1033",
+    "url": "assets/images/renner/CHROMA/RC_1033.png"
+  },
+  {
+    "code": "RC 1034",
+    "url": "assets/images/renner/CHROMA/RC_1034.png"
+  },
+  {
+    "code": "RC 1037",
+    "url": "assets/images/renner/CHROMA/RC_1037.png"
+  },
+  {
+    "code": "RC 2000",
+    "url": "assets/images/renner/CHROMA/RC_2000.png"
+  },
+  {
+    "code": "RC 2001",
+    "url": "assets/images/renner/CHROMA/RC_2001.png"
+  },
+  {
+    "code": "RC 2002",
+    "url": "assets/images/renner/CHROMA/RC_2002.png"
+  },
+  {
+    "code": "RC 2004",
+    "url": "assets/images/renner/CHROMA/RC_2004.png"
+  },
+  {
+    "code": "RC 2008",
+    "url": "assets/images/renner/CHROMA/RC_2008.png"
+  },
+  {
+    "code": "RC 2009",
+    "url": "assets/images/renner/CHROMA/RC_2009.png"
+  },
+  {
+    "code": "RC 2010",
+    "url": "assets/images/renner/CHROMA/RC_2010.png"
+  },
+  {
+    "code": "RC 2011",
+    "url": "assets/images/renner/CHROMA/RC_2011.png"
+  },
+  {
+    "code": "RC 2012",
+    "url": "assets/images/renner/CHROMA/RC_2012.png"
+  },
+  {
+    "code": "RC 3000",
+    "url": "assets/images/renner/CHROMA/RC_3000.png"
+  },
+  {
+    "code": "RC 3001",
+    "url": "assets/images/renner/CHROMA/RC_3001.png"
+  },
+  {
+    "code": "RC 3002",
+    "url": "assets/images/renner/CHROMA/RC_3002.png"
+  },
+  {
+    "code": "RC 3003",
+    "url": "assets/images/renner/CHROMA/RC_3003.png"
+  },
+  {
+    "code": "RC 3004",
+    "url": "assets/images/renner/CHROMA/RC_3004.png"
+  },
+  {
+    "code": "RC 3005",
+    "url": "assets/images/renner/CHROMA/RC_3005.png"
+  },
+  {
+    "code": "RC 3009",
+    "url": "assets/images/renner/CHROMA/RC_3009.png"
+  },
+  {
+    "code": "RC 3011",
+    "url": "assets/images/renner/CHROMA/RC_3011.png"
+  },
+  {
+    "code": "RC 3012",
+    "url": "assets/images/renner/CHROMA/RC_3012.png"
+  },
+  {
+    "code": "RC 3013",
+    "url": "assets/images/renner/CHROMA/RC_3013.png"
+  },
+  {
+    "code": "RC 3014",
+    "url": "assets/images/renner/CHROMA/RC_3014.png"
+  },
+  {
+    "code": "RC 3015",
+    "url": "assets/images/renner/CHROMA/RC_3015.png"
+  },
+  {
+    "code": "RC 3016",
+    "url": "assets/images/renner/CHROMA/RC_3016.png"
+  },
+  {
+    "code": "RC 3017",
+    "url": "assets/images/renner/CHROMA/RC_3017.png"
+  },
+  {
+    "code": "RC 3018",
+    "url": "assets/images/renner/CHROMA/RC_3018.png"
+  },
+  {
+    "code": "RC 3020",
+    "url": "assets/images/renner/CHROMA/RC_3020.png"
+  },
+  {
+    "code": "RC 3022",
+    "url": "assets/images/renner/CHROMA/RC_3022.png"
+  },
+  {
+    "code": "RC 3027",
+    "url": "assets/images/renner/CHROMA/RC_3027.png"
+  },
+  {
+    "code": "RC 3028",
+    "url": "assets/images/renner/CHROMA/RC_3028.png"
+  },
+  {
+    "code": "RC 3031",
+    "url": "assets/images/renner/CHROMA/RC_3031.png"
+  },
+  {
+    "code": "RC 4001",
+    "url": "assets/images/renner/CHROMA/RC_4001.png"
+  },
+  {
+    "code": "RC 4002",
+    "url": "assets/images/renner/CHROMA/RC_4002.png"
+  },
+  {
+    "code": "RC 4003",
+    "url": "assets/images/renner/CHROMA/RC_4003.png"
+  },
+  {
+    "code": "RC 4004",
+    "url": "assets/images/renner/CHROMA/RC_4004.png"
+  },
+  {
+    "code": "RC 4005",
+    "url": "assets/images/renner/CHROMA/RC_4005.png"
+  },
+  {
+    "code": "RC 4006",
+    "url": "assets/images/renner/CHROMA/RC_4006.png"
+  },
+  {
+    "code": "RC 4007",
+    "url": "assets/images/renner/CHROMA/RC_4007.png"
+  },
+  {
+    "code": "RC 4008",
+    "url": "assets/images/renner/CHROMA/RC_4008.png"
+  },
+  {
+    "code": "RC 4009",
+    "url": "assets/images/renner/CHROMA/RC_4009.png"
+  },
+  {
+    "code": "RC 4010",
+    "url": "assets/images/renner/CHROMA/RC_4010.png"
+  },
+  {
+    "code": "RC 5000",
+    "url": "assets/images/renner/CHROMA/RC_5000.png"
+  },
+  {
+    "code": "RC 5001",
+    "url": "assets/images/renner/CHROMA/RC_5001.png"
+  },
+  {
+    "code": "RC 5002",
+    "url": "assets/images/renner/CHROMA/RC_5002.png"
+  },
+  {
+    "code": "RC 5003",
+    "url": "assets/images/renner/CHROMA/RC_5003.png"
+  },
+  {
+    "code": "RC 5004",
+    "url": "assets/images/renner/CHROMA/RC_5004.png"
+  },
+  {
+    "code": "RC 5005",
+    "url": "assets/images/renner/CHROMA/RC_5005.png"
+  },
+  {
+    "code": "RC 5007",
+    "url": "assets/images/renner/CHROMA/RC_5007.png"
+  },
+  {
+    "code": "RC 5008",
+    "url": "assets/images/renner/CHROMA/RC_5008.png"
+  },
+  {
+    "code": "RC 5009",
+    "url": "assets/images/renner/CHROMA/RC_5009.png"
+  },
+  {
+    "code": "RC 5010",
+    "url": "assets/images/renner/CHROMA/RC_5010.png"
+  },
+  {
+    "code": "RC 5011",
+    "url": "assets/images/renner/CHROMA/RC_5011.png"
+  },
+  {
+    "code": "RC 5012",
+    "url": "assets/images/renner/CHROMA/RC_5012.png"
+  },
+  {
+    "code": "RC 5013",
+    "url": "assets/images/renner/CHROMA/RC_5013.png"
+  },
+  {
+    "code": "RC 5014",
+    "url": "assets/images/renner/CHROMA/RC_5014.png"
+  },
+  {
+    "code": "RC 5015",
+    "url": "assets/images/renner/CHROMA/RC_5015.png"
+  },
+  {
+    "code": "RC 5017",
+    "url": "assets/images/renner/CHROMA/RC_5017.png"
+  },
+  {
+    "code": "RC 5018",
+    "url": "assets/images/renner/CHROMA/RC_5018.png"
+  },
+  {
+    "code": "RC 5019",
+    "url": "assets/images/renner/CHROMA/RC_5019.png"
+  },
+  {
+    "code": "RC 5020",
+    "url": "assets/images/renner/CHROMA/RC_5020.png"
+  },
+  {
+    "code": "RC 5021",
+    "url": "assets/images/renner/CHROMA/RC_5021.png"
+  },
+  {
+    "code": "RC 5022",
+    "url": "assets/images/renner/CHROMA/RC_5022.png"
+  },
+  {
+    "code": "RC 5023",
+    "url": "assets/images/renner/CHROMA/RC_5023.png"
+  },
+  {
+    "code": "RC 5024",
+    "url": "assets/images/renner/CHROMA/RC_5024.png"
+  },
+  {
+    "code": "RC 6000",
+    "url": "assets/images/renner/CHROMA/RC_6000.png"
+  },
+  {
+    "code": "RC 6001",
+    "url": "assets/images/renner/CHROMA/RC_6001.png"
+  },
+  {
+    "code": "RC 6002",
+    "url": "assets/images/renner/CHROMA/RC_6002.png"
+  },
+  {
+    "code": "RC 6003",
+    "url": "assets/images/renner/CHROMA/RC_6003.png"
+  },
+  {
+    "code": "RC 6004",
+    "url": "assets/images/renner/CHROMA/RC_6004.png"
+  },
+  {
+    "code": "RC 6005",
+    "url": "assets/images/renner/CHROMA/RC_6005.png"
+  },
+  {
+    "code": "RC 6007",
+    "url": "assets/images/renner/CHROMA/RC_6007.png"
+  },
+  {
+    "code": "RC 6008",
+    "url": "assets/images/renner/CHROMA/RC_6008.png"
+  },
+  {
+    "code": "RC 6009",
+    "url": "assets/images/renner/CHROMA/RC_6009.png"
+  },
+  {
+    "code": "RC 6011",
+    "url": "assets/images/renner/CHROMA/RC_6011.png"
+  },
+  {
+    "code": "RC 6012",
+    "url": "assets/images/renner/CHROMA/RC_6012.png"
+  },
+  {
+    "code": "RC 6013",
+    "url": "assets/images/renner/CHROMA/RC_6013.png"
+  },
+  {
+    "code": "RC 6014",
+    "url": "assets/images/renner/CHROMA/RC_6014.png"
+  },
+  {
+    "code": "RC 6015",
+    "url": "assets/images/renner/CHROMA/RC_6015.png"
+  },
+  {
+    "code": "RC 6016",
+    "url": "assets/images/renner/CHROMA/RC_6016.png"
+  },
+  {
+    "code": "RC 6017",
+    "url": "assets/images/renner/CHROMA/RC_6017.png"
+  },
+  {
+    "code": "RC 6018",
+    "url": "assets/images/renner/CHROMA/RC_6018.png"
+  },
+  {
+    "code": "RC 6020",
+    "url": "assets/images/renner/CHROMA/RC_6020.png"
+  },
+  {
+    "code": "RC 6021",
+    "url": "assets/images/renner/CHROMA/RC_6021.png"
+  },
+  {
+    "code": "RC 6022",
+    "url": "assets/images/renner/CHROMA/RC_6022.png"
+  },
+  {
+    "code": "RC 6024",
+    "url": "assets/images/renner/CHROMA/RC_6024.png"
+  },
+  {
+    "code": "RC 6025",
+    "url": "assets/images/renner/CHROMA/RC_6025.png"
+  },
+  {
+    "code": "RC 6026",
+    "url": "assets/images/renner/CHROMA/RC_6026.png"
+  },
+  {
+    "code": "RC 6027",
+    "url": "assets/images/renner/CHROMA/RC_6027.png"
+  },
+  {
+    "code": "RC 6028",
+    "url": "assets/images/renner/CHROMA/RC_6028.png"
+  },
+  {
+    "code": "RC 6029",
+    "url": "assets/images/renner/CHROMA/RC_6029.png"
+  },
+  {
+    "code": "RC 6032",
+    "url": "assets/images/renner/CHROMA/RC_6032.png"
+  },
+  {
+    "code": "RC 6033",
+    "url": "assets/images/renner/CHROMA/RC_6033.png"
+  },
+  {
+    "code": "RC 6037",
+    "url": "assets/images/renner/CHROMA/RC_6037.png"
+  },
+  {
+    "code": "RC 7000",
+    "url": "assets/images/renner/CHROMA/RC_7000.png"
+  },
+  {
+    "code": "RC 7002",
+    "url": "assets/images/renner/CHROMA/RC_7002.png"
+  },
+  {
+    "code": "RC 7003",
+    "url": "assets/images/renner/CHROMA/RC_7003.png"
+  },
+  {
+    "code": "RC 7004",
+    "url": "assets/images/renner/CHROMA/RC_7004.png"
+  },
+  {
+    "code": "RC 7005",
+    "url": "assets/images/renner/CHROMA/RC_7005.png"
+  },
+  {
+    "code": "RC 7006",
+    "url": "assets/images/renner/CHROMA/RC_7006.png"
+  },
+  {
+    "code": "RC 7008",
+    "url": "assets/images/renner/CHROMA/RC_7008.png"
+  },
+  {
+    "code": "RC 7009",
+    "url": "assets/images/renner/CHROMA/RC_7009.png"
+  },
+  {
+    "code": "RC 7010",
+    "url": "assets/images/renner/CHROMA/RC_7010.png"
+  },
+  {
+    "code": "RC 7011",
+    "url": "assets/images/renner/CHROMA/RC_7011.png"
+  },
+  {
+    "code": "RC 7012",
+    "url": "assets/images/renner/CHROMA/RC_7012.png"
+  },
+  {
+    "code": "RC 7013",
+    "url": "assets/images/renner/CHROMA/RC_7013.png"
+  },
+  {
+    "code": "RC 7015",
+    "url": "assets/images/renner/CHROMA/RC_7015.png"
+  },
+  {
+    "code": "RC 7016",
+    "url": "assets/images/renner/CHROMA/RC_7016.png"
+  },
+  {
+    "code": "RC 7021",
+    "url": "assets/images/renner/CHROMA/RC_7021.png"
+  },
+  {
+    "code": "RC 7022",
+    "url": "assets/images/renner/CHROMA/RC_7022.png"
+  },
+  {
+    "code": "RC 7023",
+    "url": "assets/images/renner/CHROMA/RC_7023.png"
+  },
+  {
+    "code": "RC 7024",
+    "url": "assets/images/renner/CHROMA/RC_7024.png"
+  },
+  {
+    "code": "RC 7026",
+    "url": "assets/images/renner/CHROMA/RC_7026.png"
+  },
+  {
+    "code": "RC 7030",
+    "url": "assets/images/renner/CHROMA/RC_7030.png"
+  },
+  {
+    "code": "RC 7031",
+    "url": "assets/images/renner/CHROMA/RC_7031.png"
+  },
+  {
+    "code": "RC 7032",
+    "url": "assets/images/renner/CHROMA/RC_7032.png"
+  },
+  {
+    "code": "RC 7033",
+    "url": "assets/images/renner/CHROMA/RC_7033.png"
+  },
+  {
+    "code": "RC 7034",
+    "url": "assets/images/renner/CHROMA/RC_7034.png"
+  },
+  {
+    "code": "RC 7035",
+    "url": "assets/images/renner/CHROMA/RC_7035.png"
+  },
+  {
+    "code": "RC 7036",
+    "url": "assets/images/renner/CHROMA/RC_7036.png"
+  },
+  {
+    "code": "RC 7037",
+    "url": "assets/images/renner/CHROMA/RC_7037.png"
+  },
+  {
+    "code": "RC 7038",
+    "url": "assets/images/renner/CHROMA/RC_7038.png"
+  },
+  {
+    "code": "RC 7039",
+    "url": "assets/images/renner/CHROMA/RC_7039.png"
+  },
+  {
+    "code": "RC 7040",
+    "url": "assets/images/renner/CHROMA/RC_7040.png"
+  },
+  {
+    "code": "RC 7042",
+    "url": "assets/images/renner/CHROMA/RC_7042.png"
+  },
+  {
+    "code": "RC 7043",
+    "url": "assets/images/renner/CHROMA/RC_7043.png"
+  },
+  {
+    "code": "RC 7044",
+    "url": "assets/images/renner/CHROMA/RC_7044.png"
+  },
+  {
+    "code": "RC 7045",
+    "url": "assets/images/renner/CHROMA/RC_7045.png"
+  },
+  {
+    "code": "RC 7046",
+    "url": "assets/images/renner/CHROMA/RC_7046.png"
+  },
+  {
+    "code": "RC 7047",
+    "url": "assets/images/renner/CHROMA/RC_7047.png"
+  },
+  {
+    "code": "RC 8000",
+    "url": "assets/images/renner/CHROMA/RC_8000.png"
+  },
+  {
+    "code": "RC 8001",
+    "url": "assets/images/renner/CHROMA/RC_8001.png"
+  },
+  {
+    "code": "RC 8002",
+    "url": "assets/images/renner/CHROMA/RC_8002.png"
+  },
+  {
+    "code": "RC 8003",
+    "url": "assets/images/renner/CHROMA/RC_8003.png"
+  },
+  {
+    "code": "RC 8004",
+    "url": "assets/images/renner/CHROMA/RC_8004.png"
+  },
+  {
+    "code": "RC 8007",
+    "url": "assets/images/renner/CHROMA/RC_8007.png"
+  },
+  {
+    "code": "RC 8008",
+    "url": "assets/images/renner/CHROMA/RC_8008.png"
+  },
+  {
+    "code": "RC 8011",
+    "url": "assets/images/renner/CHROMA/RC_8011.png"
+  },
+  {
+    "code": "RC 8012",
+    "url": "assets/images/renner/CHROMA/RC_8012.png"
+  },
+  {
+    "code": "RC 8015",
+    "url": "assets/images/renner/CHROMA/RC_8015.png"
+  },
+  {
+    "code": "RC 8016",
+    "url": "assets/images/renner/CHROMA/RC_8016.png"
+  },
+  {
+    "code": "RC 8017",
+    "url": "assets/images/renner/CHROMA/RC_8017.png"
+  },
+  {
+    "code": "RC 8019",
+    "url": "assets/images/renner/CHROMA/RC_8019.png"
+  },
+  {
+    "code": "RC 8022",
+    "url": "assets/images/renner/CHROMA/RC_8022.png"
+  },
+  {
+    "code": "RC 8023",
+    "url": "assets/images/renner/CHROMA/RC_8023.png"
+  },
+  {
+    "code": "RC 8024",
+    "url": "assets/images/renner/CHROMA/RC_8024.png"
+  },
+  {
+    "code": "RC 8025",
+    "url": "assets/images/renner/CHROMA/RC_8025.png"
+  },
+  {
+    "code": "RC 8028",
+    "url": "assets/images/renner/CHROMA/RC_8028.png"
+  },
+  {
+    "code": "RC 8074",
+    "url": "assets/images/renner/CHROMA/RC_8074.png"
+  },
+  {
+    "code": "RC 9002",
+    "url": "assets/images/renner/CHROMA/RC_9002.png"
+  },
+  {
+    "code": "RC 9004",
+    "url": "assets/images/renner/CHROMA/RC_9004.png"
+  },
+  {
+    "code": "RC 9005",
+    "url": "assets/images/renner/CHROMA/RC_9005.png"
+  },
+  {
+    "code": "RC 9006",
+    "url": "assets/images/renner/CHROMA/RC_9006.png"
+  },
+  {
+    "code": "RC 9007",
+    "url": "assets/images/renner/CHROMA/RC_9007.png"
+  },
+  {
+    "code": "RC 9010",
+    "url": "assets/images/renner/CHROMA/RC_9010.png"
+  },
+  {
+    "code": "RC 9011",
+    "url": "assets/images/renner/CHROMA/RC_9011.png"
+  },
+  {
+    "code": "RC 9016",
+    "url": "assets/images/renner/CHROMA/RC_9016.png"
+  },
+  {
+    "code": "RC 9017",
+    "url": "assets/images/renner/CHROMA/RC_9017.png"
+  },
+  {
+    "code": "RC 9018",
+    "url": "assets/images/renner/CHROMA/RC_9018.png"
+  }
 ]

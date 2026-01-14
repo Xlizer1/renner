@@ -27,6 +27,7 @@ import { NcsRepository } from "@/src/features/color-fan/data/ncsRepository";
 import { RennerRepository } from "@/src/features/color-fan/data/rennerRepository";
 import FanStrip from "@/src/features/color-fan/presentation/components/FanStrip";
 import { useFanGesture } from "@/src/features/color-fan/presentation/hooks/useFanGesture";
+import { useFanHaptics } from "@/src/features/color-fan/presentation/hooks/useFanHaptics";
 import { useFanVirtualization } from "@/src/features/color-fan/presentation/hooks/useFanVirtualization";
 
 interface FanScreenProps {
@@ -68,6 +69,8 @@ export default function FanScreen({
   // --- GESTURES ---
   const { rotation, panGesture, scrollToIndex } = useFanGesture(data.length);
   const { min, max } = useFanVirtualization(rotation, data.length);
+
+  useFanHaptics(rotation);
 
   // --- DEEP LINKING ---
   useEffect(() => {

@@ -168,7 +168,7 @@ export const ColorMatcher = {
     const allColors: NcsItem[] = [];
     allGroups.forEach((g) => g.strip.forEach((c) => allColors.push(c)));
 
-    const ranked = allColors.map((color) => ({
+    const ranked = allColors.map((color: any) => ({
       item: color,
       distance: getDeltaE2000(targetHex, color.hex), // Using New Algo
     }));

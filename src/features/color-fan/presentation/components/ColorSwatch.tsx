@@ -13,26 +13,27 @@ interface Props {
 const ColorSwatch = memo(({ item, isSelected, onPress }: Props) => {
   // 1. TEXTURE MODE (Renner Wood)
   if (item.isTexture) {
-    // Check if this item belongs to the "CS" fan
     const isCS = item.hue === "CS";
 
     return (
       <Pressable
-        style={[styles.container, isSelected && styles.selected]}
+        style={[
+          styles.container, 
+          // No padding applied here, so image fills 100%
+          isSelected && styles.selected
+        ]}
         onPress={onPress}
       >
         <Image
           source={item.hex}
           style={[
             styles.image,
-            // Apply Zoom only for CS items
             isCS && { transform: [{ scale: 2.5 }] },
           ]}
           contentFit="cover"
           transition={0}
           cachePolicy="memory-disk"
           allowDownscaling={true}
-          recyclingKey={item.key}
         />
         <View style={styles.textOverlay}>
           <Text style={[styles.text, styles.textureText]}>{item.key}</Text>
@@ -46,6 +47,7 @@ const ColorSwatch = memo(({ item, isSelected, onPress }: Props) => {
     <Pressable
       style={[
         styles.container,
+        styles.colorModeContainer, // <--- Apply padding only here
         { backgroundColor: item.hex as string },
         isSelected && styles.selected,
       ]}
@@ -63,14 +65,20 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     justifyContent: "center",
-    paddingLeft: 8,
+    // paddingLeft: 8, <--- REMOVED FROM HERE
     borderWidth: 0,
-    overflow: "hidden", // Important: Clips the zoomed image so it stays inside the box
+    overflow: "hidden", 
+  },
+  // New style specific to solid colors to keep text indented
+  colorModeContainer: {
+    paddingLeft: 8, 
   },
   image: {
     width: "100%",
     height: "100%",
     position: "absolute",
+    left: 0, // Ensure it aligns to the very edge
+    top: 0,
   },
   selected: {
     borderColor: "#007AFF",
