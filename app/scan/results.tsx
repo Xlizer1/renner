@@ -2,6 +2,8 @@ import { useHistory } from "@/src/core/context/HistoryContext";
 import { ColorMatcher } from "@/src/features/scan/domain/colorMatcher";
 import { Ionicons } from "@expo/vector-icons";
 import Constants from "expo-constants";
+// 1. IMPORT IMAGE
+import { Image } from "expo-image";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React, { useCallback, useEffect, useState } from "react";
@@ -17,9 +19,10 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-// Helper to get the correct URL
+import { RennerRepository } from "@/src/features/color-fan/data/rennerRepository";
+
+// ... (Keep getApiUrl and API_URL) ...
 const getApiUrl = () => {
-  // In development, grab the host IP dynamically from Expo Go
   const debuggerHost = Constants.expoConfig?.hostUri;
   const localhost = debuggerHost?.split(":")[0];
   return `http://${localhost}:3000`;
@@ -28,17 +31,66 @@ const getApiUrl = () => {
 const API_URL = getApiUrl();
 
 export default function ResultsScreen() {
+  // ... (Keep hooks and state exactly as they are) ...
   const router = useRouter();
   const { addToHistory } = useHistory();
-
-  // Accept 'uri' (Image) OR 'hex' (Direct Color)
   const { uri, hex } = useLocalSearchParams<{ uri?: string; hex?: string }>();
 
   const [loading, setLoading] = useState(true);
   const [results, setResults] = useState<any>(null);
   const [fullScreenColor, setFullScreenColor] = useState<string | null>(null);
+  const [selectedFan, setSelectedFan] = useState<string>("all");
+  const [detectedHex, setDetectedHex] = useState<string>("");
 
-  // Mode A: Upload Image (Camera/Gallery)
+  // ... (Keep getItemWithAsset, fetchMatches, handleFanChange, analyzeImage, findMatchesForHex) ...
+  const getItemWithAsset = async (matchItem: any) => {
+    if (matchItem.collection) {
+      const groups = await RennerRepository.getColors(matchItem.collection);
+      const flat = groups.flatMap((g) => g.strip);
+      const found = flat.find((i) => i.key === matchItem.key);
+      if (found)
+        return {
+          ...matchItem,
+          hex: found.hex, // This is the Asset ID (Number)
+          isTexture: true,
+          hue: found.hue,
+        };
+    }
+    return matchItem;
+  };
+
+  const fetchMatches = async (hexCode: string, fan: string) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`${API_URL}/match?fan=${fan}`, {
+        method: "POST",
+        body: JSON.stringify({ hex: hexCode }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await response.json();
+
+      const hydratedMatches = await Promise.all(
+        data.matches.map(async (m: any) => ({
+          ...m,
+          item: await getItemWithAsset(m.item),
+        }))
+      );
+
+      setResults({ detectedColor: hexCode, matches: hydratedMatches });
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleFanChange = (fanId: string) => {
+    setSelectedFan(fanId);
+    if (detectedHex) {
+      fetchMatches(detectedHex, fanId);
+    }
+  };
+
   const analyzeImage = useCallback(async (imageUri: string) => {
     try {
       const formData = new FormData();
@@ -55,20 +107,14 @@ export default function ResultsScreen() {
       });
 
       const data = await response.json();
-      const matches = ColorMatcher.findClosestMatches(data.detectedColor, 5);
-
-      setResults({
-        detectedColor: data.detectedColor,
-        matches: matches,
-      });
+      setDetectedHex(data.detectedColor);
+      fetchMatches(data.detectedColor, selectedFan);
       setLoading(false);
     } catch (error) {
       handleError(error);
     }
   }, []);
 
-  
-  // --- 1. DETERMINE MODE ---
   useEffect(() => {
     if (uri) {
       analyzeImage(uri);
@@ -77,19 +123,13 @@ export default function ResultsScreen() {
     }
   }, [uri, hex, analyzeImage]);
 
-  // Mode B: Send Hex (History) -> NEW FUNCTION
   const findMatchesForHex = (colorHex: string) => {
     setLoading(true);
-
-    // 1. Use local logic instead of fetch
     const matches = ColorMatcher.findClosestMatches(colorHex, 5);
-
-    // 2. Format result to match what your UI expects
     setResults({
       detectedColor: colorHex,
-      matches: matches, // { item: NcsItem, distance: number }[]
+      matches: matches,
     });
-
     setLoading(false);
   };
 
@@ -99,8 +139,6 @@ export default function ResultsScreen() {
     setLoading(false);
   };
 
-  // ... (Rest of your component: openInFan, getTextColor, Render logic...)
-  // NO CHANGES NEEDED BELOW THIS LINE, just paste the rest of your existing component
   const openInFan = (colorKey: string) => {
     router.push({
       pathname: "/fans/ncs",
@@ -115,7 +153,6 @@ export default function ResultsScreen() {
     }
   };
 
-  // ... Helper functions (getTextColor, getMatchQuality) ...
   const getTextColor = (hex: string) => {
     if (!hex) return "white";
     const r = parseInt(hex.substr(1, 2), 16);
@@ -222,6 +259,25 @@ export default function ResultsScreen() {
           </View>
         </Pressable>
 
+        <View style={styles.tabRow}>
+          {["all", "ncs", "tm", "chroma", "cs"].map((id) => (
+            <Pressable
+              key={id}
+              onPress={() => handleFanChange(id)}
+              style={[styles.tab, selectedFan === id && styles.activeTab]}
+            >
+              <Text
+                style={[
+                  styles.tabText,
+                  selectedFan === id && styles.activeTabText,
+                ]}
+              >
+                {id.toUpperCase()}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+
         <Text style={styles.sectionTitle}>Top Matches</Text>
 
         <FlatList
@@ -235,13 +291,26 @@ export default function ResultsScreen() {
                 style={styles.matchCard}
                 onPress={() => openInFan(item.item.key)}
               >
+                {/* --- FIX IS HERE --- */}
                 <View style={styles.splitSwatchContainer}>
-                  <View
-                    style={[
-                      styles.mainSwatch,
-                      { backgroundColor: item.item.hex },
-                    ]}
-                  />
+                  {item.item.isTexture ? (
+                    // 1. RENDER IMAGE FOR TEXTURE
+                    <Image
+                      source={item.item.hex} // This is the Asset ID number
+                      style={styles.mainSwatch}
+                      contentFit="cover"
+                    />
+                  ) : (
+                    // 2. RENDER COLOR FOR NCS
+                    <View
+                      style={[
+                        styles.mainSwatch,
+                        { backgroundColor: item.item.hex },
+                      ]}
+                    />
+                  )}
+
+                  {/* Compare Sliver */}
                   <View
                     style={[
                       styles.compareSliver,
@@ -249,6 +318,8 @@ export default function ResultsScreen() {
                     ]}
                   />
                 </View>
+                {/* ------------------- */}
+
                 <View style={styles.matchInfo}>
                   <Text style={styles.matchKey}>{item.item.key}</Text>
                   <View style={styles.badgeRow}>
@@ -299,7 +370,7 @@ const styles = StyleSheet.create({
   heroCard: {
     height: 140,
     borderRadius: 24,
-    marginBottom: 30,
+    marginBottom: 15,
     padding: 24,
     justifyContent: "flex-end",
     shadowColor: "#000",
@@ -394,4 +465,20 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     opacity: 0.7,
   },
+  tabRow: {
+    flexDirection: "row",
+    // paddingHorizontal: 20,
+    marginBottom: 15,
+    gap: 10,
+  },
+  tab: {
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#444",
+  },
+  activeTab: { backgroundColor: "#FFF", borderColor: "#FFF" },
+  tabText: { color: "#888", fontWeight: "700", fontSize: 12 },
+  activeTabText: { color: "#000" },
 });

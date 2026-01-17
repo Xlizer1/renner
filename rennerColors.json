@@ -1,0 +1,2600 @@
+[
+  {
+    "key": "T01 1",
+    "hex": "#2d2827",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T01 2",
+    "hex": "#473835",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T01 3",
+    "hex": "#51413d",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T01 4",
+    "hex": "#63544f",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T03 1",
+    "hex": "#ac0925",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T03 2",
+    "hex": "#ab0723",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T03 3",
+    "hex": "#a20820",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T03 4",
+    "hex": "#ca3d47",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T07 1",
+    "hex": "#e08b1d",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T07 2",
+    "hex": "#e18b15",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T07 3",
+    "hex": "#dd860d",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T07 4",
+    "hex": "#d77307",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T08 1",
+    "hex": "#c2321c",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T08 2",
+    "hex": "#c52917",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T08 3",
+    "hex": "#bf1a12",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T08 4",
+    "hex": "#b8070e",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T10 1",
+    "hex": "#a76449",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T10 2",
+    "hex": "#9c5139",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T10 3",
+    "hex": "#924934",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T10 4",
+    "hex": "#7a3326",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T15 1",
+    "hex": "#ae6f5b",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T15 2",
+    "hex": "#934c36",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T15 3",
+    "hex": "#9a5445",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T15 4",
+    "hex": "#70312b",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T16 1",
+    "hex": "#844033",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T16 2",
+    "hex": "#79372e",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T16 3",
+    "hex": "#70312a",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T16 4",
+    "hex": "#9c624e",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T19 1",
+    "hex": "#8f5d42",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T19 2",
+    "hex": "#7e4a32",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T19 3",
+    "hex": "#723f2b",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T19 4",
+    "hex": "#573025",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T20 1",
+    "hex": "#b66f3d",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T20 2",
+    "hex": "#b16936",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T20 3",
+    "hex": "#a5592d",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T20 4",
+    "hex": "#ac5f30",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T21 1",
+    "hex": "#a3775a",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T21 2",
+    "hex": "#8f6345",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T21 3",
+    "hex": "#764b34",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T21 4",
+    "hex": "#593223",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T22 1",
+    "hex": "#a16a4e",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T22 2",
+    "hex": "#965b3f",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T22 3",
+    "hex": "#8f563c",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T22 4",
+    "hex": "#70392a",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T34 1",
+    "hex": "#815a4e",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T34 2",
+    "hex": "#7f5b4f",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T34 3",
+    "hex": "#583831",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T34 4",
+    "hex": "#4e3632",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T62 1",
+    "hex": "#898682",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T62 2",
+    "hex": "#70777b",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T62 3",
+    "hex": "#657073",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "T62 4",
+    "hex": "#496576",
+    "collection": "tm",
+    "hue": "TM-M006"
+  },
+  {
+    "key": "RC 1000",
+    "hex": "#c0c878",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1001",
+    "hex": "#d0b870",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1002",
+    "hex": "#d8b048",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1003",
+    "hex": "#f8c000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1004",
+    "hex": "#f0b000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1006",
+    "hex": "#e89800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1007",
+    "hex": "#f89800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1011",
+    "hex": "#987018",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1012",
+    "hex": "#d8c000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1013",
+    "hex": "#f8f8e0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1014",
+    "hex": "#f0d898",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1015",
+    "hex": "#f8f0c8",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1016",
+    "hex": "#f8f820",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1017",
+    "hex": "#f8c008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1018",
+    "hex": "#f8f010",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1019",
+    "hex": "#988858",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1020",
+    "hex": "#888838",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1023",
+    "hex": "#f8d800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1024",
+    "hex": "#a89018",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1027",
+    "hex": "#907800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1028",
+    "hex": "#f8b800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1032",
+    "hex": "#e8b000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1033",
+    "hex": "#f8a000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1034",
+    "hex": "#f8a018",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 1037",
+    "hex": "#f89800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 2000",
+    "hex": "#e87000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 2001",
+    "hex": "#d03000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 2002",
+    "hex": "#e01800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 2004",
+    "hex": "#f84000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 2008",
+    "hex": "#f86000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 2009",
+    "hex": "#f04000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 2010",
+    "hex": "#e05000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 2011",
+    "hex": "#f86800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 2012",
+    "hex": "#f05808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3000",
+    "hex": "#c01000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3001",
+    "hex": "#b00800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3002",
+    "hex": "#b00808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3003",
+    "hex": "#880000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3004",
+    "hex": "#680808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3005",
+    "hex": "#380808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3009",
+    "hex": "#481810",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3011",
+    "hex": "#600808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3012",
+    "hex": "#c07848",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3013",
+    "hex": "#a01008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3014",
+    "hex": "#e05848",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3015",
+    "hex": "#f8a0a0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3016",
+    "hex": "#b01808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3017",
+    "hex": "#e03820",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3018",
+    "hex": "#f02810",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3020",
+    "hex": "#e80800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3022",
+    "hex": "#d85818",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3027",
+    "hex": "#d00818",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3028",
+    "hex": "#f81000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 3031",
+    "hex": "#b01810",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 4001",
+    "hex": "#683868",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 4002",
+    "hex": "#882028",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 4003",
+    "hex": "#e03878",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 4004",
+    "hex": "#500810",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 4005",
+    "hex": "#604890",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 4006",
+    "hex": "#881050",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 4007",
+    "hex": "#281020",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 4008",
+    "hex": "#702068",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 4009",
+    "hex": "#887080",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 4010",
+    "hex": "#d81858",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5000",
+    "hex": "#082848",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5001",
+    "hex": "#002840",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5002",
+    "hex": "#001868",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5003",
+    "hex": "#001030",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5004",
+    "hex": "#000810",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5005",
+    "hex": "#002878",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5007",
+    "hex": "#104070",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5008",
+    "hex": "#081820",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5009",
+    "hex": "#003050",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5010",
+    "hex": "#002868",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5011",
+    "hex": "#001018",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5012",
+    "hex": "#0068b0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5013",
+    "hex": "#001028",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5014",
+    "hex": "#386088",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5015",
+    "hex": "#0050b0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5017",
+    "hex": "#003088",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5018",
+    "hex": "#087078",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5019",
+    "hex": "#003870",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5020",
+    "hex": "#002028",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5021",
+    "hex": "#005858",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5022",
+    "hex": "#000830",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5023",
+    "hex": "#184878",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 5024",
+    "hex": "#3880a8",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6000",
+    "hex": "#105838",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6001",
+    "hex": "#004808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6002",
+    "hex": "#003800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6003",
+    "hex": "#203018",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6004",
+    "hex": "#002020",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6005",
+    "hex": "#001810",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6007",
+    "hex": "#081008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6008",
+    "hex": "#101808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6009",
+    "hex": "#081008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6011",
+    "hex": "#406830",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6012",
+    "hex": "#081810",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6013",
+    "hex": "#506030",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6014",
+    "hex": "#181808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6015",
+    "hex": "#101810",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6016",
+    "hex": "#004828",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6017",
+    "hex": "#186810",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6018",
+    "hex": "#209810",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6020",
+    "hex": "#102010",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6021",
+    "hex": "#609060",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6022",
+    "hex": "#101008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6024",
+    "hex": "#007028",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6025",
+    "hex": "#285008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6026",
+    "hex": "#003828",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6027",
+    "hex": "#58b8c0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6028",
+    "hex": "#083020",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6029",
+    "hex": "#005018",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6032",
+    "hex": "#006828",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6033",
+    "hex": "#187060",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 6037",
+    "hex": "#008008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7000",
+    "hex": "#587880",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7002",
+    "hex": "#606040",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7003",
+    "hex": "#505848",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7004",
+    "hex": "#808888",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7005",
+    "hex": "#405048",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7006",
+    "hex": "#504838",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7008",
+    "hex": "#484010",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7009",
+    "hex": "#303830",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7010",
+    "hex": "#283028",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7011",
+    "hex": "#203838",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7012",
+    "hex": "#283838",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7013",
+    "hex": "#302818",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7015",
+    "hex": "#203030",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7016",
+    "hex": "#102020",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7021",
+    "hex": "#101818",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7022",
+    "hex": "#202018",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7023",
+    "hex": "#586858",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7024",
+    "hex": "#182828",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7026",
+    "hex": "#102020",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7030",
+    "hex": "#787870",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7031",
+    "hex": "#284848",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7032",
+    "hex": "#a8b0a0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7033",
+    "hex": "#586858",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7034",
+    "hex": "#707848",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7035",
+    "hex": "#c0d8d8",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7036",
+    "hex": "#808080",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7037",
+    "hex": "#586060",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7038",
+    "hex": "#a0b8b8",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7039",
+    "hex": "#404838",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7040",
+    "hex": "#8898a0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7042",
+    "hex": "#788880",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7043",
+    "hex": "#202828",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7044",
+    "hex": "#a8b8b0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7045",
+    "hex": "#708080",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7046",
+    "hex": "#587070",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 7047",
+    "hex": "#d0e8e0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8000",
+    "hex": "#684808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8001",
+    "hex": "#884800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8002",
+    "hex": "#482008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8003",
+    "hex": "#582800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8004",
+    "hex": "#782808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8007",
+    "hex": "#402000",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8008",
+    "hex": "#482808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8011",
+    "hex": "#301808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8012",
+    "hex": "#401808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8015",
+    "hex": "#301008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8016",
+    "hex": "#201008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8017",
+    "hex": "#181008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8019",
+    "hex": "#181010",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8022",
+    "hex": "#080808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8023",
+    "hex": "#a03800",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8024",
+    "hex": "#503010",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8025",
+    "hex": "#483018",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8028",
+    "hex": "#281808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 8074",
+    "hex": "#201008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 9002",
+    "hex": "#e8f0e0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 9004",
+    "hex": "#081008",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 9005",
+    "hex": "#000808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 9006",
+    "hex": "#a8c0c0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 9007",
+    "hex": "#686860",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 9010",
+    "hex": "#ffffff",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 9011",
+    "hex": "#080808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 9016",
+    "hex": "#ffffff",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 9017",
+    "hex": "#000808",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "RC 9018",
+    "hex": "#c8e8e0",
+    "collection": "chroma",
+    "hue": "CHROMA"
+  },
+  {
+    "key": "CS001 BIANCO GHIACCIO",
+    "hex": "#eaf0eb",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS002 BIANCO NEVE",
+    "hex": "#eef4eb",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS003 BIANCO INVERNO",
+    "hex": "#eaf1eb",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS004 BIANCO AVORIO",
+    "hex": "#e9ebe3",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS005 BIANCO PERNICE",
+    "hex": "#dadbd4",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS006 CENERINO",
+    "hex": "#cbcccc",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS007 BIANCO ALPINO",
+    "hex": "#eff3ed",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS008 GRIGIO LUCE",
+    "hex": "#e0e0e3",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS009 GRIGIO LAMA",
+    "hex": "#c8cbd1",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS010 GRIGIO CEMENTO",
+    "hex": "#d6d1cf",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS011 GRIGIO CALDO",
+    "hex": "#c3bfbb",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS012 GRIGIO NUBE",
+    "hex": "#d3cac3",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS013 GRIGIO JERSEY",
+    "hex": "#b0a59f",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS014 PISTACCHIO",
+    "hex": "#e9e4c8",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS015 GRIGIO COLONIALE",
+    "hex": "#e4e0d0",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS016 GRIGIO POLVERE",
+    "hex": "#e7e1ca",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS017 GRIGIO BANCONOTA",
+    "hex": "#d4d1c4",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS018 FRASSINO PRE",
+    "hex": "#f2e5d2",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS019 CREMA CHIARO",
+    "hex": "#f6d2b1",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS020 PAPIRO DE DEE",
+    "hex": "#e7d5c1",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS021 PAPIRO SCURO",
+    "hex": "#ddc9b4",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS022 FAGGIO",
+    "hex": "#eadaca",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS023 GARVIA",
+    "hex": "#e7d8c6",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS024 GIALLO CARAVELLA",
+    "hex": "#dcc8bb",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS025 GIALLO AMBRATO",
+    "hex": "#d4b08e",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS026 GIALLO PALLIDO",
+    "hex": "#f6d9ad",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS027 GIALLO PERU",
+    "hex": "#e9b675",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS028 GIALLO SENAPE",
+    "hex": "#caad7d",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS029 GIALLO ORZO",
+    "hex": "#fdc891",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS030 VELA",
+    "hex": "#e6d8c4",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS031 GIALLO PIACENZA",
+    "hex": "#dac5a6",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS032 LARICE",
+    "hex": "#fbd1b1",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS033 ALBICOCCA",
+    "hex": "#feb881",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS034 RRR RRRRRRRRRERRRBBA PESCA",
+    "hex": "#fcaf83",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS035 ROSA ARANCIO",
+    "hex": "#fe8c4e",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS036 ARANCIO",
+    "hex": "#fb9861",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS037 ARANCIO LUMINOSO",
+    "hex": "#fd6c1a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS038 ARANCIO ARAGOSTA",
+    "hex": "#ef6f56",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS039 ARANCIO PASTELLO",
+    "hex": "#ce492b",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS040 ARANCIO PURO",
+    "hex": "#ed5b4e",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS041 ROSSO FUOCO",
+    "hex": "#dc1b30",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS042 ROSSO DEL MATTINO",
+    "hex": "#e7545b",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS043 RED PASSION",
+    "hex": "#d6122c",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS044 SABBIA DEL SINAI",
+    "hex": "#bd3f51",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS045 ROSSO SOLE",
+    "hex": "#bf0e26",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS046 ROSSO BACCA",
+    "hex": "#ba4253",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS047 ROSSO TRAMONTO",
+    "hex": "#941327",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS048 BORDEAUX",
+    "hex": "#715152",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS049 GIALLO RAGGIO",
+    "hex": "#fcd860",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS050 GIALLO LIMONE",
+    "hex": "#f6d45f",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS051 GIALLO ORO",
+    "hex": "#fda72d",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS052 GIALLO MINERALE",
+    "hex": "#f4c05f",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS053 GIALLO PALLIDO",
+    "hex": "#feb44b",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS054 GIALLO OCRA",
+    "hex": "#fac166",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS055 GIALLO PAPAYA",
+    "hex": "#fe9227",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS056 TES GIALLO MODENA",
+    "hex": "#faa852",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS057 GIALLO PAVESE",
+    "hex": "#ddac4a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS058 GIALLO MILLEVILLE",
+    "hex": "#edae6a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS059 GIALLO TROPICI",
+    "hex": "#fd963b",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS060 COLORADO",
+    "hex": "#e79765",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS061 GIALLO OSSIDO",
+    "hex": "#f48958",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS062 GIALLO MEXICO",
+    "hex": "#b66555",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS063 CASTANO MEDITERRANEO",
+    "hex": "#7b2a22",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS064 GIALLO ESTATE",
+    "hex": "#f8e78d",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS066 GIALLO INDIAN",
+    "hex": "#e9bb49",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS067 GIALLO LUCE",
+    "hex": "#f9df67",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS068 GIALLO CANARIE",
+    "hex": "#ebc249",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS069 GIALLO MIELE",
+    "hex": "#e4c26a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS070 GIALLO SENAPE",
+    "hex": "#b78f2f",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS071 RRR SERRE MELASSA",
+    "hex": "#a88a53",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS072 MARRONE INGLESE",
+    "hex": "#3c2813",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS073 RED REA TERRE MONTANE",
+    "hex": "#5b4e49",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS074 MARRONE PENNARELLO",
+    "hex": "#453026",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS075 CASTAGNO",
+    "hex": "#5c4e4b",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS076 MARRONE LIGURE",
+    "hex": "#2e2319",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS077 GERMOGLIO",
+    "hex": "#b1a590",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS078 BEIGE",
+    "hex": "#b59a8f",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS079 CREMA WHISKEY",
+    "hex": "#c09483",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS080 NOCCIOLO",
+    "hex": "#af7751",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS081 TERRA DI SIENA",
+    "hex": "#c38764",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS082 TERRA D ORIENTE",
+    "hex": "#d97b4e",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS083 MARRONE SPEZIA",
+    "hex": "#aa704c",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS084 MARRONE INFUSO",
+    "hex": "#722c16",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS085 AUTUNNO",
+    "hex": "#765345",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS086 TABACCO",
+    "hex": "#42241a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS087 CASTANO",
+    "hex": "#624d49",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS088 TESTA DI MORO",
+    "hex": "#201514",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS089 MARRONE SCURO",
+    "hex": "#443f40",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS092 LAVANDA",
+    "hex": "#d8cdd1",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS093 SFUMATURA DEL TRAMONTO",
+    "hex": "#bbaab3",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS094 VIOLETTO FLOREALE",
+    "hex": "#f1cde1",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS095 ROSA PALLIDO",
+    "hex": "#f1e2e4",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS096 ROSA CANDIDO",
+    "hex": "#f6c7cb",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS097 ROSA SALMONE",
+    "hex": "#fabbc2",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS098 ROSA",
+    "hex": "#f3d2ca",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS099 ROSA ACCESO",
+    "hex": "#fac1bd",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS100 ROSA ANTICO",
+    "hex": "#fe8273",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS101 ROSA TRAMONTO",
+    "hex": "#f47b73",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS102 ROSA BEIGE",
+    "hex": "#da806f",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS103 ROSA CONFETTO",
+    "hex": "#faaec0",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS104 FUCSIA",
+    "hex": "#e84c7c",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS105 ROSA PURPUREO",
+    "hex": "#d780aa",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS106 ROSA RUBENS",
+    "hex": "#e73467",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS107 ROSA DEL CAIRO",
+    "hex": "#cd406c",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS108 VINACCIA",
+    "hex": "#5a2139",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS109 ROSA GIULIA",
+    "hex": "#7e5067",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS110 VIOLA IMPERO",
+    "hex": "#37202c",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS111 VIOLA DELLA ROCCA",
+    "hex": "#5d4f4f",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS112 VIOLA CARDINALE",
+    "hex": "#67588a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS113 VIOLA FIORENTINA",
+    "hex": "#5c5e85",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS114 NOTTE DEL DESERTO",
+    "hex": "#1f2232",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS115 VIOLAACCESO",
+    "hex": "#586d9f",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS116 VIOLA PULSAR",
+    "hex": "#133677",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS117 VIOLA INTENSO",
+    "hex": "#4d4d68",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS118 VIOLANOTTE",
+    "hex": "#1a1b2f",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS120 CELESTE PURO",
+    "hex": "#94d8f3",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS121 CELESTE NUVOLA",
+    "hex": "#4ebeea",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS122 TAS CIELO DI PRIMAVERA",
+    "hex": "#4cb7e0",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS123 CIELO DELLA SERA",
+    "hex": "#1288c7",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS124 AZZURRO RENNER",
+    "hex": "#3d94c4",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS125 BLU STELLATO",
+    "hex": "#0d5298",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS126 BLU SIRIO",
+    "hex": "#406389",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS127 AZZURRO VELATO",
+    "hex": "#1285b6",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS128 AZZURRO ARTICO",
+    "hex": "#a7c4e3",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS129 AZZURRO INTERMEDIO",
+    "hex": "#5796de",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS130 BLU OLTREMARE",
+    "hex": "#539ad1",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS131 BLU OCEANO",
+    "hex": "#114d89",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS132 AZZURRO TESSUTO",
+    "hex": "#547e94",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS133 BLU CANNES",
+    "hex": "#15344c",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS134 BLU CAPRI",
+    "hex": "#4c525b",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS135 BLU",
+    "hex": "#1a1a1a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS136 BLU NOTTE",
+    "hex": "#3c3c3c",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS137 BLU COBALTO",
+    "hex": "#252428",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS138 BLU CONFINE",
+    "hex": "#4d5054",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS139 VERDE SCURO",
+    "hex": "#191919",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS140 VERDE PINO",
+    "hex": "#4a4a4a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS141 VERDE SIEPE",
+    "hex": "#262626",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS142 VERDE BOSCO",
+    "hex": "#565656",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS143 VERDE MACCHIA",
+    "hex": "#161616",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS144 VERDE BRUNO",
+    "hex": "#474747",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS145 VERDE MIMETICO",
+    "hex": "#2a2a2a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS146 VERDE",
+    "hex": "#5b6a4e",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS147 VERDE LUCE",
+    "hex": "#92ca37",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS148 VERDE PRIMIZIA",
+    "hex": "#afca71",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS149 VERDE MELA",
+    "hex": "#a39736",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS150 VERDE CANDIDO",
+    "hex": "#c3dfc5",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS151 VERDE ALASKA",
+    "hex": "#a5db9e",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS152 VERDE SIBERIA",
+    "hex": "#88e3b5",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS153 VERDE OPACO",
+    "hex": "#58aa8a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS154 VERDE ITALIA",
+    "hex": "#3fb17b",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS155 VERDINO",
+    "hex": "#7fb645",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS156 VERDE CRISTALLO",
+    "hex": "#97c47b",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS157 VERDE PRIMAVERA",
+    "hex": "#40b758",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS158 VERDE SMERALDO",
+    "hex": "#3faa7c",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS159 VERDE LINFA",
+    "hex": "#10775c",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS160 VERDE PRATO",
+    "hex": "#429986",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS161 VERDE FOGLIA",
+    "hex": "#109187",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS162 VERDE LUMINOSO",
+    "hex": "#52d0c5",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS163 VERDE POLARE",
+    "hex": "#9be0c9",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS164 VERDE RIO",
+    "hex": "#43979f",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS165 VERDE CORTECCIA",
+    "hex": "#21908a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS166 VERDE CADMIO",
+    "hex": "#4bafb7",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS167 VERDE SPENTO",
+    "hex": "#16b6b7",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS168 VERDE BLU",
+    "hex": "#84d1e5",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS169 RIFLESSO",
+    "hex": "#71a0b9",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS170 VERDE AVIO",
+    "hex": "#5c8391",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS171 AZZURRO ALFA",
+    "hex": "#9eece4",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS172 GRIGIO SABBIA",
+    "hex": "#babfc4",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS173 GRIGIO MARINO",
+    "hex": "#a6a9b0",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS174 GRIGIO",
+    "hex": "#b8b9b9",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS175 GRIGIO FERRO",
+    "hex": "#8e919a",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS176 GRIGIO CENERE",
+    "hex": "#a5a5ab",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS177 GRIGIO MEDIO",
+    "hex": "#3d4248",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS178 GRIGIO OMBRA",
+    "hex": "#505458",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS179 GRIGIO FINANZA",
+    "hex": "#8c9197",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS180 GRIGIO IDRO",
+    "hex": "#888a8b",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS181 GRIGIO ROCCIA",
+    "hex": "#161616",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS182 GRIGIO RERLA",
+    "hex": "#c1c2be",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS183 GRIGIO QUARZO",
+    "hex": "#aeaaa7",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS184 GRIGIO SETA",
+    "hex": "#a29f9c",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS185 GRIGIO AVIATORE",
+    "hex": "#797876",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS186 GRIGIO TERRA",
+    "hex": "#4d4d4d",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS187 GRIGIO LUNARE",
+    "hex": "#1b1b1b",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS188 GRIGIO CHIARO",
+    "hex": "#bab7b3",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS189 GRIGIO CALDO",
+    "hex": "#70706c",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS190 GRIGIO MOSCATO",
+    "hex": "#585858",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS191 GRIGIO GALLES",
+    "hex": "#171717",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS192 GRIGIO UFFICIALE",
+    "hex": "#474747",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS193 GRIGIO MIMETICO",
+    "hex": "#161616",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS194 GRIGIO HARLEM",
+    "hex": "#474747",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS195 GRIGIO BRUNO",
+    "hex": "#1d1d1d",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS196 GRIGIO CARDINE",
+    "hex": "#484848",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS197 GRIGIO TEMPESTA",
+    "hex": "#191919",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS198 CANNA DI FUCILE",
+    "hex": "#0b0b0b",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS199 NERO FUMO",
+    "hex": "#0e0e0e",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS200 NERO SEPPIA",
+    "hex": "#0d0d0d",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS201 BIANCO GESSO",
+    "hex": "#ffffff",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS202 VERDE ACIDO",
+    "hex": "#bec632",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS203 VERDE GRIGIO",
+    "hex": "#a3a49f",
+    "collection": "cs",
+    "hue": "CS"
+  },
+  {
+    "key": "CS204 CARTA DA ZUCCHERO",
+    "hex": "#89a6bb",
+    "collection": "cs",
+    "hue": "CS"
+  }
+]
